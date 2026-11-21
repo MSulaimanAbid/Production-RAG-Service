@@ -179,3 +179,93 @@ async def ingest_document(file: UploadFile) -> DocumentResponse:
         created_at=datetime.now(timezone.utc),
         message="Document uploaded and ingested successfully.",
     )
+
+
+async def ingest_local_path(file_path: Path | str, strategy: str = "recursive") -> DocumentResponse:
+    """
+    Ingest a document directly from a local filesystem path.
+    Used for corpus pre-loading, benchmarking, and batch ingestion.
+    """
+    path = Path(file_path)
+    if not path.exists():
+        raise FileNotFoundError(f"File not found: {path}")
+
+    filename = path.name
+    ext = path.suffix.lower()
+    if ext not in settings.allowed_extensions:
+        raise ValueError(f"Unsupported file type '{ext}'. Only {settings.allowed_extensions} are supported.")
+
+    file_type = ext.replace(".", "")
+    content = path.read_bytes()
+    if not content:
+        raise ValueError(f"File '{filename}' is empty.")
+
+    file_hash = hashlib.sha256(content).hexdigest()
+    vector_store = get_vector_store()
+
+    existing_id = vector_store.document_exists_by_hash(file_hash)
+    if existing_id:
+        logger.info("Duplicate document skipped", filename=filename, existing_id=existing_id)
+        # Fetch existing document metadata
+        for doc in vector_store.list_documents():
+            if doc.doc_id == existing_id:
+                return DocumentResponse(
+                    doc_id=doc.doc_id,
+                    filename=doc.filename,
+                    file_type=doc.file_type,
+                    file_hash=file_hash,
+                    chunk_count=doc.chunk_count,
+                    page_count=doc.page_count,
+                    created_at=doc.created_at,
+                    message="Document already ingested.",
+                )
+
+    doc_id = str(uuid.uuid4())
+    extraction_result = await extract_document(path, file_type)
+
+    cleaned_pages: list[ExtractedPage] = []
+    for page in extraction_result.pages:
+        cleaned_text = clean_text(page.text)
+        cleaned_pages.append(
+            ExtractedPage(
+                page_number=page.page_number,
+                section_title=page.section_title,
+                text=cleaned_text,
+                has_tables=page.has_tables,
+            )
+        )
+
+    chunks = chunk_extracted_pages(
+        doc_id=doc_id,
+        filename=filename,
+        file_type=file_type,
+        pages=cleaned_pages,
+        strategy=strategy,
+    )
+
+    if not chunks:
+        raise ValueError(f"Could not produce text chunks from '{filename}'.")
+
+    chunk_texts = [c.text for c in chunks]
+    embeddings = await embed_texts(chunk_texts)
+
+    page_count = extraction_result.total_pages if file_type == "pdf" else None
+    vector_store.add_chunks(
+        chunks=chunks,
+        embeddings=embeddings,
+        file_hash=file_hash,
+        page_count=page_count,
+    )
+
+    logger.info("Local file ingested successfully", filename=filename, chunk_count=len(chunks))
+    return DocumentResponse(
+        doc_id=doc_id,
+        filename=filename,
+        file_type=file_type,
+        file_hash=file_hash,
+        chunk_count=len(chunks),
+        page_count=page_count,
+        created_at=datetime.now(timezone.utc),
+        message="Local file ingested successfully.",
+    )
+
