@@ -64,6 +64,19 @@
         }
       };
 
+      async function parseApiResponse(res) {
+        const contentType = res.headers.get("content-type") || "";
+        if (contentType.includes("application/json")) {
+          try {
+            return await res.json();
+          } catch (e) {
+            return { detail: `Failed to parse server JSON response: ${e.message}` };
+          }
+        }
+        const text = await res.text();
+        return { detail: text || `Server error (HTTP ${res.status})` };
+      }
+
       const handleFileUpload = async (e) => {
         const file = e.target.files?.[0];
         if (!file) return;
@@ -81,13 +94,14 @@
             body: formData,
           });
 
-          const data = await res.json();
+          const data = await parseApiResponse(res);
 
           if (!res.ok) {
             let msg = data.detail || `Upload failed with status ${res.status}`;
             if (res.status === 409) msg = `Duplicate Document (409): ${msg}`;
             if (res.status === 415) msg = `Unsupported Media Type (415): ${msg}`;
             if (res.status === 400) msg = `Bad Request (400): ${msg}`;
+            if (res.status === 500) msg = `Server Error (500): ${msg}`;
             throw new Error(msg);
           }
 
@@ -149,7 +163,7 @@
             body: JSON.stringify(payload),
           });
 
-          const data = await res.json();
+          const data = await parseApiResponse(res);
 
           if (!res.ok) {
             throw new Error(data.detail || `Question query failed (HTTP ${res.status})`);

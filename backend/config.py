@@ -97,7 +97,7 @@ class Settings(BaseSettings):
 
     # ── Embedding API ─────────────────────────────────────────────────────────
     embedding_timeout_seconds: int = Field(default=20, description="Timeout for embedding API calls")
-    embedding_batch_size: int = Field(default=10, description="Chunks to embed per API call")
+    embedding_batch_size: int = Field(default=30, description="Chunks to embed per API call")
     embedding_max_retries: int = Field(default=3, description="Max retries on embedding API errors")
 
     # ── File upload ───────────────────────────────────────────────────────────

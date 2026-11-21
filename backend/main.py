@@ -122,6 +122,21 @@ async def http_exception_handler(request: Request, exc: HTTPException) -> JSONRe
     )
 
 
+@app.exception_handler(Exception)
+async def unhandled_exception_handler(request: Request, exc: Exception) -> JSONResponse:
+    """Catch-all for unexpected exceptions to guarantee JSON error response format."""
+    request_id = structlog.contextvars.get_contextvars().get("request_id")
+    logger.error("Unhandled server exception", error=str(exc), path=request.url.path, exc_info=True)
+    return JSONResponse(
+        status_code=500,
+        content=ErrorResponse(
+            error="INTERNAL_SERVER_ERROR",
+            detail=str(exc) or "An internal server error occurred.",
+            request_id=request_id,
+        ).model_dump(mode="json"),
+    )
+
+
 def _status_to_error_code(status: int) -> str:
     """Map HTTP status codes to short error code strings."""
     return {
