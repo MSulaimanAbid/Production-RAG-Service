@@ -58,9 +58,9 @@ POST /api/documents                                                             
 | **Backend Framework** | **FastAPI** | Asynchronous, auto-generates OpenAPI interactive docs at `/docs`. |
 | **Language & Tooling** | **Python 3.12+ / uv** | Blazing-fast dependency resolution and virtual environment isolation. |
 | **Vector Database** | **ChromaDB** | In-process persistent storage with HNSW index and cosine metric. |
-| **Primary LLM** | **Gemini 2.5 Flash** | Latest Google model: sub-second latency, 1M context window, high fidelity. |
-| **Evaluation Judge** | **Gemini 2.5 Pro** | Deep reasoning model for LLM-as-a-Judge scoring. |
-| **Embedding Model** | **gemini-embedding-exp-03-07** | 3072-dimensional embeddings for high semantic separation. |
+| **Primary LLM** | **Gemini 3.5 Flash Lite** | High-fidelity generation with adaptive multi-model fallback. |
+| **Evaluation Judge** | **Gemini 3.5 Flash Lite** | Fast, deterministic scoring for LLM-as-a-Judge evaluations. |
+| **Embedding Model** | **gemini-embedding-001** | 3072-dimensional embeddings for high semantic separation. |
 | **PDF Extraction** | **pdfplumber + pypdf** | Layout-preserving text extraction with table detection. |
 | **DOCX Extraction** | **python-docx** | Heading hierarchy and tabular row extraction. |
 | **Chunking** | **LangChain Text Splitters** | `RecursiveCharacterTextSplitter` (512 size / 50 overlap). |
@@ -74,7 +74,7 @@ POST /api/documents                                                             
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/Production-RAG-Service.git
+git clone https://github.com/MSulaimanAbid/Production-RAG-Service.git
 cd Production-RAG-Service
 ```
 

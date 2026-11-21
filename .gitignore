@@ -237,5 +237,5 @@ corpus/*
 !corpus/**/*.docx
 
 # Eval results
-backend/evals/results/*.json
+!backend/evals/results/*.json
 !backend/evals/results/.gitkeep

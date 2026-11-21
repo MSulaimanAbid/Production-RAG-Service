@@ -12,7 +12,7 @@
 A working RAG system without measured numbers is just a demonstration. This evaluation report documents the empirical performance of our production service across a curated **30-question golden dataset** evaluating both retrieval accuracy and answer faithfulness.
 
 We benchmarked and compared two distinct architectural configurations:
-- **Config A (Recommended):** `RecursiveCharacterTextSplitter` (chunk size: 512, overlap: 50) + Google `gemini-embedding-exp-03-07` (3072 dims).
+- **Config A (Recommended):** `RecursiveCharacterTextSplitter` (chunk size: 512, overlap: 50) + Google `gemini-embedding-001` (3072 dims) + `gemini-3.5-flash-lite`.
 - **Config B (Baseline):** `CharacterTextSplitter` (chunk size: 256, overlap: 32) + Google `text-embedding-004` (768 dims).
 
 **Key Takeaways:**
@@ -81,7 +81,7 @@ uv run python -m backend.evals.eval_runner --config b --save-results
 
 ### Why Config A Won
 1.  **Context Boundary Integrity:** Fixed-size chunking (Config B) repeatedly severed compound clauses in technical policy tables (e.g. splitting the row header `$1,200 USD` from its qualification `claims submitted within 60 days`). This degraded Config B's MRR to 0.7133.
-2.  **Semantic Density in Embeddings:** `models/gemini-embedding-exp-03-07` (3072 dimensions) captured nuanced semantic synonymy in reworded questions (e.g. matching "telecommuting staff member" to "remote employee") where 768-dim embeddings placed the correct chunk below rank 3.
+2.  **Semantic Density in Embeddings:** `gemini-embedding-001` (3072 dimensions) captured nuanced semantic synonymy in reworded questions (e.g. matching "telecommuting staff member" to "remote employee") where 768-dim embeddings placed the correct chunk below rank 3.
 3.  **Latency Trade-off:** While Config B was 230ms faster due to shorter token payloads, Config A's 16% jump in Top-1 accuracy is well worth the minor latency difference for a production-grade service.
 
 ---

@@ -1,0 +1,2344 @@
+{
+  "summary": {
+    "configuration": "Config A",
+    "timestamp": "2026-11-21T10:34:58.349447+00:00",
+    "total_questions": 30,
+    "hit_rate_at_1": 1.0,
+    "hit_rate_at_3": 1.0,
+    "hit_rate_at_5": 1.0,
+    "mrr": 1.0,
+    "recall_at_5": 1.0,
+    "unanswerable_accuracy": 1.0,
+    "citation_precision": 1.0,
+    "average_faithfulness": 0.912,
+    "average_correctness": 1.0,
+    "average_latency_ms": 4018
+  },
+  "results": [
+    {
+      "id": "q001",
+      "question": "What is the maximum reimbursement for home office equipment provided to Tier A remote employees?",
+      "question_type": "factual",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "acme_global_remote_work_policy.docx",
+      "generated_answer": "Eligible Tier A remote employees are provided with a one-time setup reimbursement of up to $1,200 USD to ensure ergonomic and productive home workspaces [Source: acme_global_remote_work_policy.docx, section '3. Home Office Equipment Stipend and IT Provisioning'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-4",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Home Office Equipment Stipend and IT Provisioning",
+          "chunk_index": 4,
+          "text": "To ensure ergonomic and productive home workspaces, Acme Global provides eligible Tier A remote employees with a one-time setup reimbursement of up to $1,200 USD. Claims must be submitted via the expense portal accompanied by valid itemized receipts within 60 days of remote classification.\nIn addition, permanent remote employees receive a recurring monthly broadband allowance of $75 USD, disbursed automatically with payroll on the 25th of each calendar month.",
+          "similarity_score": 0.7795
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-2",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 2,
+          "text": "Remote work eligibility begins upon successful completion of the standard 90-day probationary period. Employees classified under Remote Tier A are permitted to work 100% remotely from an approved home location. Tier B employees operate on a hybrid schedule requiring a minimum of two designated office days per week.",
+          "similarity_score": 0.7406
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-9",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "5. Cybersecurity, VPN, and Data Classification",
+          "chunk_index": 9,
+          "text": "[Document Tables]:\nItem Category | Maximum Allowance (USD) | Refresh Cycle | Ownership Policy\nErgonomic Desk Chair | $400 | 36 Months | Employee Retains\nStanding Desk / Desk Converter | $450 | 48 Months | Employee Retains\nDual Monitor Setup (up to 27 inch) | $350 | 36 Months | Acme Property\nNoise-Canceling Headset | $150 | 24 Months | Employee Retains\nCompany Laptop (MacBook Pro / ThinkPad) | Provided by IT | 36 Months | Acme Property (Mandatory Return)",
+          "similarity_score": 0.7345
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-0",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "Acme Global: Remote Work & Employee Benefits Policy\nDocument ID: POL-2026-RW01 | Version: 3.2 | Effective Date: January 1, 2026 | Classification: Internal",
+          "similarity_score": 0.6626
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-1",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 1,
+          "text": "This policy defines the terms, expectations, and benefits associated with remote and hybrid work at Acme Global Technologies Inc. It applies to all permanent full-time and part-time employees worldwide. Contractors and temporary workers are governed by separate master service agreements.",
+          "similarity_score": 0.6476
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-4",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "page": null,
+          "section": "3. Home Office Equipment Stipend and IT Provisioning",
+          "excerpt": "To ensure ergonomic and productive home workspaces, Acme Global provides eligible Tier A remote employees with a one-time setup reimbursement of up to $1,200 USD. Claims must be submitted via the expe..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 4408
+    },
+    {
+      "id": "q002",
+      "question": "What are the required core working hours for remote employees at Acme Global?",
+      "question_type": "factual",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "acme_global_remote_work_policy.docx",
+      "generated_answer": "All remote employees must maintain core working hours between 10:00 UTC and 16:00 UTC [Source: acme_global_remote_work_policy.docx, section '2. Working Hours, Availability, and Time Tracking'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-3",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Working Hours, Availability, and Time Tracking",
+          "chunk_index": 3,
+          "text": "All remote employees must maintain core working hours between 10:00 UTC and 16:00 UTC to facilitate cross-timezone collaboration. During core hours, team members are expected to be available on Slack and email. Total weekly commitment is 40 hours for full-time personnel.\nOvertime must be pre-approved in writing by a department director. Non-exempt employees logging more than 40 hours in a standard pay period without prior written approval will receive a formal compliance notice.",
+          "similarity_score": 0.7774
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-1",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 1,
+          "text": "This policy defines the terms, expectations, and benefits associated with remote and hybrid work at Acme Global Technologies Inc. It applies to all permanent full-time and part-time employees worldwide. Contractors and temporary workers are governed by separate master service agreements.",
+          "similarity_score": 0.7703
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-0",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "Acme Global: Remote Work & Employee Benefits Policy\nDocument ID: POL-2026-RW01 | Version: 3.2 | Effective Date: January 1, 2026 | Classification: Internal",
+          "similarity_score": 0.7396
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-4",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Home Office Equipment Stipend and IT Provisioning",
+          "chunk_index": 4,
+          "text": "To ensure ergonomic and productive home workspaces, Acme Global provides eligible Tier A remote employees with a one-time setup reimbursement of up to $1,200 USD. Claims must be submitted via the expense portal accompanied by valid itemized receipts within 60 days of remote classification.\nIn addition, permanent remote employees receive a recurring monthly broadband allowance of $75 USD, disbursed automatically with payroll on the 25th of each calendar month.",
+          "similarity_score": 0.7274
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-7",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "5. Cybersecurity, VPN, and Data Classification",
+          "chunk_index": 7,
+          "text": "All remote computing devices connecting to Acme Global production systems, code repositories, or customer databases must route all traffic through the corporate WireGuard VPN with multi-factor authentication (MFA) enabled. Full-disk encryption (BitLocker on Windows or FileVault on macOS) is mandatory and managed by Jamf/Intune MDM.",
+          "similarity_score": 0.6999
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-3",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "page": null,
+          "section": "2. Working Hours, Availability, and Time Tracking",
+          "excerpt": "All remote employees must maintain core working hours between 10:00 UTC and 16:00 UTC to facilitate cross-timezone collaboration. During core hours, team members are expected to be available on Slack ..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 4086
+    },
+    {
+      "id": "q003",
+      "question": "How much recurring monthly broadband allowance is disbursed to remote employees?",
+      "question_type": "factual",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "acme_global_remote_work_policy.docx",
+      "generated_answer": "Permanent remote employees receive a recurring monthly broadband allowance of $75 USD [Source: acme_global_remote_work_policy.docx, section '3. Home Office Equipment Stipend and IT Provisioning'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-4",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Home Office Equipment Stipend and IT Provisioning",
+          "chunk_index": 4,
+          "text": "To ensure ergonomic and productive home workspaces, Acme Global provides eligible Tier A remote employees with a one-time setup reimbursement of up to $1,200 USD. Claims must be submitted via the expense portal accompanied by valid itemized receipts within 60 days of remote classification.\nIn addition, permanent remote employees receive a recurring monthly broadband allowance of $75 USD, disbursed automatically with payroll on the 25th of each calendar month.",
+          "similarity_score": 0.8028
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-0",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "Acme Global: Remote Work & Employee Benefits Policy\nDocument ID: POL-2026-RW01 | Version: 3.2 | Effective Date: January 1, 2026 | Classification: Internal",
+          "similarity_score": 0.6688
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-2",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 2,
+          "text": "Remote work eligibility begins upon successful completion of the standard 90-day probationary period. Employees classified under Remote Tier A are permitted to work 100% remotely from an approved home location. Tier B employees operate on a hybrid schedule requiring a minimum of two designated office days per week.",
+          "similarity_score": 0.6671
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-9",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "5. Cybersecurity, VPN, and Data Classification",
+          "chunk_index": 9,
+          "text": "[Document Tables]:\nItem Category | Maximum Allowance (USD) | Refresh Cycle | Ownership Policy\nErgonomic Desk Chair | $400 | 36 Months | Employee Retains\nStanding Desk / Desk Converter | $450 | 48 Months | Employee Retains\nDual Monitor Setup (up to 27 inch) | $350 | 36 Months | Acme Property\nNoise-Canceling Headset | $150 | 24 Months | Employee Retains\nCompany Laptop (MacBook Pro / ThinkPad) | Provided by IT | 36 Months | Acme Property (Mandatory Return)",
+          "similarity_score": 0.6477
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-1",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 1,
+          "text": "This policy defines the terms, expectations, and benefits associated with remote and hybrid work at Acme Global Technologies Inc. It applies to all permanent full-time and part-time employees worldwide. Contractors and temporary workers are governed by separate master service agreements.",
+          "similarity_score": 0.6439
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-4",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "page": null,
+          "section": "3. Home Office Equipment Stipend and IT Provisioning",
+          "excerpt": "To ensure ergonomic and productive home workspaces, Acme Global provides eligible Tier A remote employees with a one-time setup reimbursement of up to $1,200 USD. Claims must be submitted via the expe..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 3322
+    },
+    {
+      "id": "q004",
+      "question": "How many days of paid annual vacation leave do permanent full-time employees accrue per year?",
+      "question_type": "factual",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "acme_global_remote_work_policy.docx",
+      "generated_answer": "Full-time permanent employees accrue 25 business days of paid annual vacation leave per calendar year [Source: acme_global_remote_work_policy.docx, section '4. Annual Leave, Sick Leave, and Paid Time Off (PTO)'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-5",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+          "chunk_index": 5,
+          "text": "Full-time permanent employees accrue 25 business days of paid annual vacation leave per calendar year. Annual leave accrues on the first business day of each month at a rate of 2.08 days per month. A maximum of 5 unused vacation days may be rolled over into the subsequent calendar year; rollover days expire on March 31st if unspent.",
+          "similarity_score": 0.8367
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-6",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+          "chunk_index": 6,
+          "text": "Employees are entitled to 10 paid sick days annually, effective from day one of employment without probation. Absences exceeding 3 consecutive business days require medical certification from a licensed physician.",
+          "similarity_score": 0.6832
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-3",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Working Hours, Availability, and Time Tracking",
+          "chunk_index": 3,
+          "text": "All remote employees must maintain core working hours between 10:00 UTC and 16:00 UTC to facilitate cross-timezone collaboration. During core hours, team members are expected to be available on Slack and email. Total weekly commitment is 40 hours for full-time personnel.\nOvertime must be pre-approved in writing by a department director. Non-exempt employees logging more than 40 hours in a standard pay period without prior written approval will receive a formal compliance notice.",
+          "similarity_score": 0.6026
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-2",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 2,
+          "text": "Remote work eligibility begins upon successful completion of the standard 90-day probationary period. Employees classified under Remote Tier A are permitted to work 100% remotely from an approved home location. Tier B employees operate on a hybrid schedule requiring a minimum of two designated office days per week.",
+          "similarity_score": 0.5987
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-4",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Home Office Equipment Stipend and IT Provisioning",
+          "chunk_index": 4,
+          "text": "To ensure ergonomic and productive home workspaces, Acme Global provides eligible Tier A remote employees with a one-time setup reimbursement of up to $1,200 USD. Claims must be submitted via the expense portal accompanied by valid itemized receipts within 60 days of remote classification.\nIn addition, permanent remote employees receive a recurring monthly broadband allowance of $75 USD, disbursed automatically with payroll on the 25th of each calendar month.",
+          "similarity_score": 0.5713
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-5",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "page": null,
+          "section": "4. Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+          "excerpt": "Full-time permanent employees accrue 25 business days of paid annual vacation leave per calendar year. Annual leave accrues on the first business day of each month at a rate of 2.08 days per month. A ..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 3475
+    },
+    {
+      "id": "q005",
+      "question": "How many unused vacation days can be rolled over to the following year and when do they expire?",
+      "question_type": "factual",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "acme_global_remote_work_policy.docx",
+      "generated_answer": "A maximum of 5 unused vacation days may be rolled over into the subsequent calendar year, and these rollover days expire on March 31st if unspent [Source: acme_global_remote_work_policy.docx, section '4. Annual Leave, Sick Leave, and Paid Time Off (PTO)'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-5",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+          "chunk_index": 5,
+          "text": "Full-time permanent employees accrue 25 business days of paid annual vacation leave per calendar year. Annual leave accrues on the first business day of each month at a rate of 2.08 days per month. A maximum of 5 unused vacation days may be rolled over into the subsequent calendar year; rollover days expire on March 31st if unspent.",
+          "similarity_score": 0.776
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-6",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+          "chunk_index": 6,
+          "text": "Employees are entitled to 10 paid sick days annually, effective from day one of employment without probation. Absences exceeding 3 consecutive business days require medical certification from a licensed physician.",
+          "similarity_score": 0.6228
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-3",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Working Hours, Availability, and Time Tracking",
+          "chunk_index": 3,
+          "text": "All remote employees must maintain core working hours between 10:00 UTC and 16:00 UTC to facilitate cross-timezone collaboration. During core hours, team members are expected to be available on Slack and email. Total weekly commitment is 40 hours for full-time personnel.\nOvertime must be pre-approved in writing by a department director. Non-exempt employees logging more than 40 hours in a standard pay period without prior written approval will receive a formal compliance notice.",
+          "similarity_score": 0.5694
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-2",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 2,
+          "text": "Remote work eligibility begins upon successful completion of the standard 90-day probationary period. Employees classified under Remote Tier A are permitted to work 100% remotely from an approved home location. Tier B employees operate on a hybrid schedule requiring a minimum of two designated office days per week.",
+          "similarity_score": 0.5626
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-8",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "5. Cybersecurity, VPN, and Data Classification",
+          "chunk_index": 8,
+          "text": "Under no circumstances may company confidential data be saved to personal cloud drives (Dropbox, iCloud, personal Google Drive) or processed through unapproved external consumer AI tools.",
+          "similarity_score": 0.546
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-5",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "page": null,
+          "section": "4. Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+          "excerpt": "Full-time permanent employees accrue 25 business days of paid annual vacation leave per calendar year. Annual leave accrues on the first business day of each month at a rate of 2.08 days per month. A ..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 3668
+    },
+    {
+      "id": "q006",
+      "question": "What are the target first response and resolution SLAs for a P1 critical incident?",
+      "question_type": "factual",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "cloud_infrastructure_incident_playbook.docx",
+      "generated_answer": "For a P1 - Critical incident, the target First Response SLA is less than 15 minutes (< 15 minutes), and the Target Resolution SLA is less than 2 hours (< 2 hours) [Source: cloud_infrastructure_incident_playbook.docx, section '3. Blameless Post-Mortem Policy'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-5",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "chunk_index": 5,
+          "text": "[Document Tables]:\nSeverity | Definition & Impact | First Response SLA | Target Resolution SLA\nP1 - Critical | Complete outage of user-facing production APIs or data loss affecting >10% of active users. | < 15 minutes | < 2 hours\nP2 - Major | Core service degradation with impaired functionality; workaround unavailable. | < 30 minutes | < 4 hours\nP3 - Moderate | Partial system disruption; non-critical features affected or viable workaround exists. | < 2 hours | < 24 hours",
+          "similarity_score": 0.7878
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-4",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "chunk_index": 4,
+          "text": "A formal blameless post-mortem review is required for all P1 incidents and recurring P2 incidents. The review meeting must be held within 48 business hours of incident resolution. The resulting Post-Incident Report (PIR) must detail the chronological timeline, root cause analysis (using the 5-Whys methodology), detection shortcomings, and assigned Jira corrective action tickets with clear owners and 30-day completion milestones.",
+          "similarity_score": 0.7171
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-2",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 2,
+          "text": "Upon declaration of a P1 or P2 incident, an Incident Command Bridge is established on dedicated Slack channel #incident-war-room and a permanent Zoom bridge. The incident team consists of three mandatory roles:\n- Incident Commander (IC): Holds absolute decision-making authority over diagnostic steps, traffic failover, and rollbacks. Responsible for assigning tasks and shielding engineers from external executive interruptions.",
+          "similarity_score": 0.7038
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-3",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 3,
+          "text": "- Technical Lead (TL): Coordinates technical investigation, directs database administrators and backend engineers, and reviews hotfix pull requests prior to emergency staging deployment.\n- Communications Lead (CL): Maintains the public status page (status.acmecloud.io) and provides internal stakeholder updates every 30 minutes for P1 incidents and every 60 minutes for P2 incidents.",
+          "similarity_score": 0.7027
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-1",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Incident Classification Framework",
+          "chunk_index": 1,
+          "text": "This playbook governs the detection, triage, mitigation, and post-incident analysis of cloud infrastructure and application outages affecting Acme Cloud Services. All incidents must be classified within 10 minutes of alert ingestion.",
+          "similarity_score": 0.6979
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-5",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "excerpt": "[Document Tables]:\nSeverity | Definition & Impact | First Response SLA | Target Resolution SLA\nP1 - Critical | Complete outage of user-facing production APIs or data loss affecting >10% of active user..."
+        }
+      ],
+      "faithfulness_score": 0.8,
+      "correctness_score": 1.0,
+      "latency_ms": 3512
+    },
+    {
+      "id": "q007",
+      "question": "What is the timeframe for holding a blameless post-mortem review following a P1 incident?",
+      "question_type": "factual",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "cloud_infrastructure_incident_playbook.docx",
+      "generated_answer": "The formal blameless post-mortem review meeting must be held within 48 business hours of incident resolution [Source: cloud_infrastructure_incident_playbook.docx, section '3. Blameless Post-Mortem Policy'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-4",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "chunk_index": 4,
+          "text": "A formal blameless post-mortem review is required for all P1 incidents and recurring P2 incidents. The review meeting must be held within 48 business hours of incident resolution. The resulting Post-Incident Report (PIR) must detail the chronological timeline, root cause analysis (using the 5-Whys methodology), detection shortcomings, and assigned Jira corrective action tickets with clear owners and 30-day completion milestones.",
+          "similarity_score": 0.8548
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-2",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 2,
+          "text": "Upon declaration of a P1 or P2 incident, an Incident Command Bridge is established on dedicated Slack channel #incident-war-room and a permanent Zoom bridge. The incident team consists of three mandatory roles:\n- Incident Commander (IC): Holds absolute decision-making authority over diagnostic steps, traffic failover, and rollbacks. Responsible for assigning tasks and shielding engineers from external executive interruptions.",
+          "similarity_score": 0.7175
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-1",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Incident Classification Framework",
+          "chunk_index": 1,
+          "text": "This playbook governs the detection, triage, mitigation, and post-incident analysis of cloud infrastructure and application outages affecting Acme Cloud Services. All incidents must be classified within 10 minutes of alert ingestion.",
+          "similarity_score": 0.6714
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-5",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "chunk_index": 5,
+          "text": "[Document Tables]:\nSeverity | Definition & Impact | First Response SLA | Target Resolution SLA\nP1 - Critical | Complete outage of user-facing production APIs or data loss affecting >10% of active users. | < 15 minutes | < 2 hours\nP2 - Major | Core service degradation with impaired functionality; workaround unavailable. | < 30 minutes | < 4 hours\nP3 - Moderate | Partial system disruption; non-critical features affected or viable workaround exists. | < 2 hours | < 24 hours",
+          "similarity_score": 0.6709
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-3",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 3,
+          "text": "- Technical Lead (TL): Coordinates technical investigation, directs database administrators and backend engineers, and reviews hotfix pull requests prior to emergency staging deployment.\n- Communications Lead (CL): Maintains the public status page (status.acmecloud.io) and provides internal stakeholder updates every 30 minutes for P1 incidents and every 60 minutes for P2 incidents.",
+          "similarity_score": 0.6622
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-4",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "excerpt": "A formal blameless post-mortem review is required for all P1 incidents and recurring P2 incidents. The review meeting must be held within 48 business hours of incident resolution. The resulting Post-I..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 3422
+    },
+    {
+      "id": "q008",
+      "question": "What engines power the Space Launch System (SLS) core stage and how much thrust do they produce?",
+      "question_type": "factual",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "nasa_artemis_mission_overview.docx",
+      "generated_answer": "The SLS core stage is powered by four Aerojet Rocketdyne RS-25 engines that produce 2.0 million pounds of thrust [Source: nasa_artemis_mission_overview.docx, section '2. Core Launch and Spacecraft Architecture'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-2",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Core Launch and Spacecraft Architecture",
+          "chunk_index": 2,
+          "text": "The Space Launch System (SLS) is NASA's super heavy-lift expendable launch vehicle. The SLS Block 1 core stage measures 212 feet in height, holds 733,000 gallons of cryogenic liquid hydrogen and liquid oxygen, and is powered by four Aerojet Rocketdyne RS-25 engines producing 2.0 million pounds of thrust. Two five-segment solid rocket boosters provide an additional 7.2 million pounds of thrust at liftoff.",
+          "similarity_score": 0.7987
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-5",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 5,
+          "text": "[Document Tables]:\nMission | Flight Date / Status | Configuration | Primary Objective\nArtemis I | Completed Nov 2022 | SLS Block 1 Crew + ESM | Uncrewed Distant Retrograde Orbit flight test around Moon\nArtemis II | Scheduled 2025 | SLS Block 1 Crewed | First crewed lunar flyby test carrying 4 astronauts on free-return trajectory\nArtemis III | Target 2026 | SLS Block 1B + Starship HLS | First crewed lunar south pole landing with two surface-walking astronauts",
+          "similarity_score": 0.6369
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-3",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Core Launch and Spacecraft Architecture",
+          "chunk_index": 3,
+          "text": "The Orion Spacecraft accommodates four astronauts for missions up to 21 days in deep space without docking. Orion comprises the Crew Module manufactured by Lockheed Martin and the European Service Module (ESM) provided by Airbus, which supplies electrical power, propulsion, thermal control, and cabin atmosphere.",
+          "similarity_score": 0.6111
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-0",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "NASA Artemis Program: Lunar Exploration Architecture\nReference: NASA-SP-2026-ART | Public Domain Technical Briefing",
+          "similarity_score": 0.5915
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-4",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 4,
+          "text": "The Lunar Gateway is an outpost orbiting the Moon in a Near-Rectilinear Halo Orbit (NRHO), providing vital support for long-term human lunar exploration. The lunar south pole is specifically targeted due to permanently shadowed craters containing water ice deposits in the regolith, which can be extracted for drinking water, oxygen generation, and rocket propellant production.",
+          "similarity_score": 0.5791
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-2",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "page": null,
+          "section": "2. Core Launch and Spacecraft Architecture",
+          "excerpt": "The Space Launch System (SLS) is NASA's super heavy-lift expendable launch vehicle. The SLS Block 1 core stage measures 212 feet in height, holds 733,000 gallons of cryogenic liquid hydrogen and liqui..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 3979
+    },
+    {
+      "id": "q009",
+      "question": "What is the primary objective of the Artemis III mission?",
+      "question_type": "factual",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "nasa_artemis_mission_overview.docx",
+      "generated_answer": "The primary objective of the Artemis III mission is the first crewed lunar south pole landing with two surface-walking astronauts [Source: nasa_artemis_mission_overview.docx, section '4. Lunar Gateway and South Pole Resource Utilization'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-5",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 5,
+          "text": "[Document Tables]:\nMission | Flight Date / Status | Configuration | Primary Objective\nArtemis I | Completed Nov 2022 | SLS Block 1 Crew + ESM | Uncrewed Distant Retrograde Orbit flight test around Moon\nArtemis II | Scheduled 2025 | SLS Block 1 Crewed | First crewed lunar flyby test carrying 4 astronauts on free-return trajectory\nArtemis III | Target 2026 | SLS Block 1B + Starship HLS | First crewed lunar south pole landing with two surface-walking astronauts",
+          "similarity_score": 0.7691
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-6",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 6,
+          "text": "Artemis IV | Target 2028 | SLS Block 1B + Gateway | Delivery of I-Hab module to Lunar Gateway and second crewed landing",
+          "similarity_score": 0.7176
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-1",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Program Overview and Strategic Objectives",
+          "chunk_index": 1,
+          "text": "The Artemis campaign represents humanity's return to the Moon, led by NASA with international partners including the European Space Agency (ESA), Japan Aerospace Exploration Agency (JAXA), and Canadian Space Agency (CSA). Unlike the Apollo program, Artemis focuses on sustainable, long-term lunar presence and serves as a proving ground for future human missions to Mars.",
+          "similarity_score": 0.7105
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-0",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "NASA Artemis Program: Lunar Exploration Architecture\nReference: NASA-SP-2026-ART | Public Domain Technical Briefing",
+          "similarity_score": 0.6649
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-4",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 4,
+          "text": "The Lunar Gateway is an outpost orbiting the Moon in a Near-Rectilinear Halo Orbit (NRHO), providing vital support for long-term human lunar exploration. The lunar south pole is specifically targeted due to permanently shadowed craters containing water ice deposits in the regolith, which can be extracted for drinking water, oxygen generation, and rocket propellant production.",
+          "similarity_score": 0.6382
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-5",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "excerpt": "[Document Tables]:\nMission | Flight Date / Status | Configuration | Primary Objective\nArtemis I | Completed Nov 2022 | SLS Block 1 Crew + ESM | Uncrewed Distant Retrograde Orbit flight test around Moo..."
+        }
+      ],
+      "faithfulness_score": 0.5,
+      "correctness_score": 1.0,
+      "latency_ms": 3424
+    },
+    {
+      "id": "q010",
+      "question": "Why is the lunar south pole targeted for resource utilization in the Artemis program?",
+      "question_type": "factual",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "nasa_artemis_mission_overview.docx",
+      "generated_answer": "The lunar south pole is targeted because it contains permanently shadowed craters with water ice deposits in the regolith [Source: nasa_artemis_mission_overview.docx, section '4. Lunar Gateway and South Pole Resource Utilization']. This water ice can be extracted for use as drinking water, oxygen generation, and rocket propellant production [Source: nasa_artemis_mission_overview.docx, section '4. Lunar Gateway and South Pole Resource Utilization'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-4",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 4,
+          "text": "The Lunar Gateway is an outpost orbiting the Moon in a Near-Rectilinear Halo Orbit (NRHO), providing vital support for long-term human lunar exploration. The lunar south pole is specifically targeted due to permanently shadowed craters containing water ice deposits in the regolith, which can be extracted for drinking water, oxygen generation, and rocket propellant production.",
+          "similarity_score": 0.7738
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-0",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "NASA Artemis Program: Lunar Exploration Architecture\nReference: NASA-SP-2026-ART | Public Domain Technical Briefing",
+          "similarity_score": 0.6645
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-1",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Program Overview and Strategic Objectives",
+          "chunk_index": 1,
+          "text": "The Artemis campaign represents humanity's return to the Moon, led by NASA with international partners including the European Space Agency (ESA), Japan Aerospace Exploration Agency (JAXA), and Canadian Space Agency (CSA). Unlike the Apollo program, Artemis focuses on sustainable, long-term lunar presence and serves as a proving ground for future human missions to Mars.",
+          "similarity_score": 0.6606
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-5",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 5,
+          "text": "[Document Tables]:\nMission | Flight Date / Status | Configuration | Primary Objective\nArtemis I | Completed Nov 2022 | SLS Block 1 Crew + ESM | Uncrewed Distant Retrograde Orbit flight test around Moon\nArtemis II | Scheduled 2025 | SLS Block 1 Crewed | First crewed lunar flyby test carrying 4 astronauts on free-return trajectory\nArtemis III | Target 2026 | SLS Block 1B + Starship HLS | First crewed lunar south pole landing with two surface-walking astronauts",
+          "similarity_score": 0.6158
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-6",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 6,
+          "text": "Artemis IV | Target 2028 | SLS Block 1B + Gateway | Delivery of I-Hab module to Lunar Gateway and second crewed landing",
+          "similarity_score": 0.5943
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-4",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "excerpt": "The Lunar Gateway is an outpost orbiting the Moon in a Near-Rectilinear Halo Orbit (NRHO), providing vital support for long-term human lunar exploration. The lunar south pole is specifically targeted ..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 4259
+    },
+    {
+      "id": "q011",
+      "question": "Explain both the one-time stipend and recurring internet allowance for remote workers, including submission deadlines.",
+      "question_type": "multipart",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "acme_global_remote_work_policy.docx",
+      "generated_answer": "Eligible Tier A remote employees receive a one-time home office setup reimbursement of up to $1,200 USD to ensure ergonomic and productive workspaces [Source: acme_global_remote_work_policy.docx, section '3. Home Office Equipment Stipend and IT Provisioning']. Claims for this stipend must be submitted through the expense portal along with valid itemized receipts within 60 days of remote classification [Source: acme_global_remote_work_policy.docx, section '3. Home Office Equipment Stipend and IT Provisioning']. \n\nAdditionally, permanent remote employees receive a recurring monthly broadband allowance of $75 USD, which is disbursed automatically with payroll on the 25th of each calendar month [Source: acme_global_remote_work_policy.docx, section '3. Home Office Equipment Stipend and IT Provisioning'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-4",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Home Office Equipment Stipend and IT Provisioning",
+          "chunk_index": 4,
+          "text": "To ensure ergonomic and productive home workspaces, Acme Global provides eligible Tier A remote employees with a one-time setup reimbursement of up to $1,200 USD. Claims must be submitted via the expense portal accompanied by valid itemized receipts within 60 days of remote classification.\nIn addition, permanent remote employees receive a recurring monthly broadband allowance of $75 USD, disbursed automatically with payroll on the 25th of each calendar month.",
+          "similarity_score": 0.7866
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-2",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 2,
+          "text": "Remote work eligibility begins upon successful completion of the standard 90-day probationary period. Employees classified under Remote Tier A are permitted to work 100% remotely from an approved home location. Tier B employees operate on a hybrid schedule requiring a minimum of two designated office days per week.",
+          "similarity_score": 0.6722
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-0",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "Acme Global: Remote Work & Employee Benefits Policy\nDocument ID: POL-2026-RW01 | Version: 3.2 | Effective Date: January 1, 2026 | Classification: Internal",
+          "similarity_score": 0.6583
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-3",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Working Hours, Availability, and Time Tracking",
+          "chunk_index": 3,
+          "text": "All remote employees must maintain core working hours between 10:00 UTC and 16:00 UTC to facilitate cross-timezone collaboration. During core hours, team members are expected to be available on Slack and email. Total weekly commitment is 40 hours for full-time personnel.\nOvertime must be pre-approved in writing by a department director. Non-exempt employees logging more than 40 hours in a standard pay period without prior written approval will receive a formal compliance notice.",
+          "similarity_score": 0.6572
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-9",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "5. Cybersecurity, VPN, and Data Classification",
+          "chunk_index": 9,
+          "text": "[Document Tables]:\nItem Category | Maximum Allowance (USD) | Refresh Cycle | Ownership Policy\nErgonomic Desk Chair | $400 | 36 Months | Employee Retains\nStanding Desk / Desk Converter | $450 | 48 Months | Employee Retains\nDual Monitor Setup (up to 27 inch) | $350 | 36 Months | Acme Property\nNoise-Canceling Headset | $150 | 24 Months | Employee Retains\nCompany Laptop (MacBook Pro / ThinkPad) | Provided by IT | 36 Months | Acme Property (Mandatory Return)",
+          "similarity_score": 0.6437
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-4",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "page": null,
+          "section": "3. Home Office Equipment Stipend and IT Provisioning",
+          "excerpt": "To ensure ergonomic and productive home workspaces, Acme Global provides eligible Tier A remote employees with a one-time setup reimbursement of up to $1,200 USD. Claims must be submitted via the expe..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 4008
+    },
+    {
+      "id": "q012",
+      "question": "Compare the response time and resolution SLAs between a P1 Critical incident and a P2 Major incident.",
+      "question_type": "multipart",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "cloud_infrastructure_incident_playbook.docx",
+      "generated_answer": "Based on the provided document, the SLAs are as follows:\n\n* **P1 - Critical:** \n  * First Response SLA: Less than 15 minutes [Source: cloud_infrastructure_incident_playbook.docx, section 3. Blameless Post-Mortem Policy]\n  * Target Resolution SLA: Less than 2 hours [Source: cloud_infrastructure_incident_playbook.docx, section 3. Blameless Post-Mortem Policy]\n\n* **P2 - Major:** \n  * First Response SLA: Less than 30 minutes [Source: cloud_infrastructure_incident_playbook.docx, section 3. Blameless Post-Mortem Policy]\n  * Target Resolution SLA: Less than 4 hours [Source: cloud_infrastructure_incident_playbook.docx, section 3. Blameless Post-Mortem Policy]",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-5",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "chunk_index": 5,
+          "text": "[Document Tables]:\nSeverity | Definition & Impact | First Response SLA | Target Resolution SLA\nP1 - Critical | Complete outage of user-facing production APIs or data loss affecting >10% of active users. | < 15 minutes | < 2 hours\nP2 - Major | Core service degradation with impaired functionality; workaround unavailable. | < 30 minutes | < 4 hours\nP3 - Moderate | Partial system disruption; non-critical features affected or viable workaround exists. | < 2 hours | < 24 hours",
+          "similarity_score": 0.7909
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-4",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "chunk_index": 4,
+          "text": "A formal blameless post-mortem review is required for all P1 incidents and recurring P2 incidents. The review meeting must be held within 48 business hours of incident resolution. The resulting Post-Incident Report (PIR) must detail the chronological timeline, root cause analysis (using the 5-Whys methodology), detection shortcomings, and assigned Jira corrective action tickets with clear owners and 30-day completion milestones.",
+          "similarity_score": 0.7055
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-3",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 3,
+          "text": "- Technical Lead (TL): Coordinates technical investigation, directs database administrators and backend engineers, and reviews hotfix pull requests prior to emergency staging deployment.\n- Communications Lead (CL): Maintains the public status page (status.acmecloud.io) and provides internal stakeholder updates every 30 minutes for P1 incidents and every 60 minutes for P2 incidents.",
+          "similarity_score": 0.6992
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-2",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 2,
+          "text": "Upon declaration of a P1 or P2 incident, an Incident Command Bridge is established on dedicated Slack channel #incident-war-room and a permanent Zoom bridge. The incident team consists of three mandatory roles:\n- Incident Commander (IC): Holds absolute decision-making authority over diagnostic steps, traffic failover, and rollbacks. Responsible for assigning tasks and shielding engineers from external executive interruptions.",
+          "similarity_score": 0.6987
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-1",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Incident Classification Framework",
+          "chunk_index": 1,
+          "text": "This playbook governs the detection, triage, mitigation, and post-incident analysis of cloud infrastructure and application outages affecting Acme Cloud Services. All incidents must be classified within 10 minutes of alert ingestion.",
+          "similarity_score": 0.6657
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-5",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "excerpt": "[Document Tables]:\nSeverity | Definition & Impact | First Response SLA | Target Resolution SLA\nP1 - Critical | Complete outage of user-facing production APIs or data loss affecting >10% of active user..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 3835
+    },
+    {
+      "id": "q013",
+      "question": "What are the three mandatory incident response roles and what are their respective primary responsibilities?",
+      "question_type": "multipart",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "cloud_infrastructure_incident_playbook.docx",
+      "generated_answer": "Based on the provided document, the three mandatory incident response roles and their primary responsibilities are:\n\n1. **Incident Commander (IC):** Holds absolute decision-making authority over diagnostic steps, traffic failover, and rollbacks, and is responsible for assigning tasks and shielding engineers from external executive interruptions [Source: cloud_infrastructure_incident_playbook.docx, section '2. Incident Response Team Roles'].\n2. **Technical Lead (TL):** Coordinates the technical investigation, directs database administrators and backend engineers, and reviews hotfix pull requests prior to emergency staging deployment [Source: cloud_infrastructure_incident_playbook.docx, section '2. Incident Response Team Roles'].\n3. **Communications Lead (CL):** Maintains the public status page (status.acmecloud.io) and provides internal stakeholder updates every 30 minutes for P1 incidents and every 60 minutes for P2 incidents [Source: cloud_infrastructure_incident_playbook.docx, section '2. Incident Response Team Roles'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-2",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 2,
+          "text": "Upon declaration of a P1 or P2 incident, an Incident Command Bridge is established on dedicated Slack channel #incident-war-room and a permanent Zoom bridge. The incident team consists of three mandatory roles:\n- Incident Commander (IC): Holds absolute decision-making authority over diagnostic steps, traffic failover, and rollbacks. Responsible for assigning tasks and shielding engineers from external executive interruptions.",
+          "similarity_score": 0.7418
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-3",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 3,
+          "text": "- Technical Lead (TL): Coordinates technical investigation, directs database administrators and backend engineers, and reviews hotfix pull requests prior to emergency staging deployment.\n- Communications Lead (CL): Maintains the public status page (status.acmecloud.io) and provides internal stakeholder updates every 30 minutes for P1 incidents and every 60 minutes for P2 incidents.",
+          "similarity_score": 0.6927
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-4",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "chunk_index": 4,
+          "text": "A formal blameless post-mortem review is required for all P1 incidents and recurring P2 incidents. The review meeting must be held within 48 business hours of incident resolution. The resulting Post-Incident Report (PIR) must detail the chronological timeline, root cause analysis (using the 5-Whys methodology), detection shortcomings, and assigned Jira corrective action tickets with clear owners and 30-day completion milestones.",
+          "similarity_score": 0.6504
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-0",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "Cloud Engineering: Production Incident Response Playbook\nDocument ID: SRE-PB-2026 | Version: 4.1 | Owner: Reliability Engineering | Classification: Confidential",
+          "similarity_score": 0.6159
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-1",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Incident Classification Framework",
+          "chunk_index": 1,
+          "text": "This playbook governs the detection, triage, mitigation, and post-incident analysis of cloud infrastructure and application outages affecting Acme Cloud Services. All incidents must be classified within 10 minutes of alert ingestion.",
+          "similarity_score": 0.6113
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-2",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "excerpt": "Upon declaration of a P1 or P2 incident, an Incident Command Bridge is established on dedicated Slack channel #incident-war-room and a permanent Zoom bridge. The incident team consists of three mandat..."
+        }
+      ],
+      "faithfulness_score": 0.5,
+      "correctness_score": 1.0,
+      "latency_ms": 3824
+    },
+    {
+      "id": "q014",
+      "question": "Contrast the objectives and configurations of the Artemis I and Artemis II flight missions.",
+      "question_type": "multipart",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "nasa_artemis_mission_overview.docx",
+      "generated_answer": "Based on the provided documents, the objectives and configurations of Artemis I and Artemis II are as follows:\n\n* **Artemis I**: \n  * **Configuration:** SLS Block 1 Crew + ESM [Source: nasa_artemis_mission_overview.docx, section '4. Lunar Gateway and South Pole Resource Utilization']\n  * **Primary Objective:** Uncrewed Distant Retrograde Orbit flight test around the Moon [Source: nasa_artemis_mission_overview.docx, section '4. Lunar Gateway and South Pole Resource Utilization']. (It was completed in November 2022 [Source: nasa_artemis_mission_overview.docx, section '4. Lunar Gateway and South Pole Resource Utilization']).\n\n* **Artemis II**: \n  * **Configuration:** SLS Block 1 Crewed [Source: nasa_artemis_mission_overview.docx, section '4. Lunar Gateway and South Pole Resource Utilization']\n  * **Primary Objective:** First crewed lunar flyby test carrying 4 astronauts on a free-return trajectory [Source: nasa_artemis_mission_overview.docx, section '4. Lunar Gateway and South Pole Resource Utilization']. (It is scheduled for 2025 [Source: nasa_artemis_mission_overview.docx, section '4. Lunar Gateway and South Pole Resource Utilization']).",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-5",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 5,
+          "text": "[Document Tables]:\nMission | Flight Date / Status | Configuration | Primary Objective\nArtemis I | Completed Nov 2022 | SLS Block 1 Crew + ESM | Uncrewed Distant Retrograde Orbit flight test around Moon\nArtemis II | Scheduled 2025 | SLS Block 1 Crewed | First crewed lunar flyby test carrying 4 astronauts on free-return trajectory\nArtemis III | Target 2026 | SLS Block 1B + Starship HLS | First crewed lunar south pole landing with two surface-walking astronauts",
+          "similarity_score": 0.7827
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-1",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Program Overview and Strategic Objectives",
+          "chunk_index": 1,
+          "text": "The Artemis campaign represents humanity's return to the Moon, led by NASA with international partners including the European Space Agency (ESA), Japan Aerospace Exploration Agency (JAXA), and Canadian Space Agency (CSA). Unlike the Apollo program, Artemis focuses on sustainable, long-term lunar presence and serves as a proving ground for future human missions to Mars.",
+          "similarity_score": 0.7067
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-6",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 6,
+          "text": "Artemis IV | Target 2028 | SLS Block 1B + Gateway | Delivery of I-Hab module to Lunar Gateway and second crewed landing",
+          "similarity_score": 0.6885
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-0",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "NASA Artemis Program: Lunar Exploration Architecture\nReference: NASA-SP-2026-ART | Public Domain Technical Briefing",
+          "similarity_score": 0.6701
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-3",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Core Launch and Spacecraft Architecture",
+          "chunk_index": 3,
+          "text": "The Orion Spacecraft accommodates four astronauts for missions up to 21 days in deep space without docking. Orion comprises the Crew Module manufactured by Lockheed Martin and the European Service Module (ESM) provided by Airbus, which supplies electrical power, propulsion, thermal control, and cabin atmosphere.",
+          "similarity_score": 0.6324
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-5",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "excerpt": "[Document Tables]:\nMission | Flight Date / Status | Configuration | Primary Objective\nArtemis I | Completed Nov 2022 | SLS Block 1 Crew + ESM | Uncrewed Distant Retrograde Orbit flight test around Moo..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 3878
+    },
+    {
+      "id": "q015",
+      "question": "What are the annual paid sick leave entitlement and the requirement for consecutive absences?",
+      "question_type": "multipart",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "acme_global_remote_work_policy.docx",
+      "generated_answer": "Employees are entitled to 10 paid sick days annually, effective from day one of employment without probation [Source: acme_global_remote_work_policy.docx, section '4. Annual Leave, Sick Leave, and Paid Time Off (PTO)']. Absences that exceed 3 consecutive business days require medical certification from a licensed physician [Source: acme_global_remote_work_policy.docx, section '4. Annual Leave, Sick Leave, and Paid Time Off (PTO)'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-6",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+          "chunk_index": 6,
+          "text": "Employees are entitled to 10 paid sick days annually, effective from day one of employment without probation. Absences exceeding 3 consecutive business days require medical certification from a licensed physician.",
+          "similarity_score": 0.7855
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-5",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+          "chunk_index": 5,
+          "text": "Full-time permanent employees accrue 25 business days of paid annual vacation leave per calendar year. Annual leave accrues on the first business day of each month at a rate of 2.08 days per month. A maximum of 5 unused vacation days may be rolled over into the subsequent calendar year; rollover days expire on March 31st if unspent.",
+          "similarity_score": 0.6361
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-3",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Working Hours, Availability, and Time Tracking",
+          "chunk_index": 3,
+          "text": "All remote employees must maintain core working hours between 10:00 UTC and 16:00 UTC to facilitate cross-timezone collaboration. During core hours, team members are expected to be available on Slack and email. Total weekly commitment is 40 hours for full-time personnel.\nOvertime must be pre-approved in writing by a department director. Non-exempt employees logging more than 40 hours in a standard pay period without prior written approval will receive a formal compliance notice.",
+          "similarity_score": 0.5515
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-2",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 2,
+          "text": "Remote work eligibility begins upon successful completion of the standard 90-day probationary period. Employees classified under Remote Tier A are permitted to work 100% remotely from an approved home location. Tier B employees operate on a hybrid schedule requiring a minimum of two designated office days per week.",
+          "similarity_score": 0.551
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-4",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Home Office Equipment Stipend and IT Provisioning",
+          "chunk_index": 4,
+          "text": "To ensure ergonomic and productive home workspaces, Acme Global provides eligible Tier A remote employees with a one-time setup reimbursement of up to $1,200 USD. Claims must be submitted via the expense portal accompanied by valid itemized receipts within 60 days of remote classification.\nIn addition, permanent remote employees receive a recurring monthly broadband allowance of $75 USD, disbursed automatically with payroll on the 25th of each calendar month.",
+          "similarity_score": 0.5415
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-6",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "page": null,
+          "section": "4. Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+          "excerpt": "Employees are entitled to 10 paid sick days annually, effective from day one of employment without probation. Absences exceeding 3 consecutive business days require medical certification from a licens..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 3609
+    },
+    {
+      "id": "q016",
+      "question": "What are the mandatory VPN and disk encryption requirements for remote computing devices?",
+      "question_type": "multipart",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "acme_global_remote_work_policy.docx",
+      "generated_answer": "For remote computing devices connecting to Acme Global production systems, code repositories, or customer databases, the mandatory requirements are:\n\n* All traffic must be routed through the corporate WireGuard VPN with multi-factor authentication (MFA) enabled [Source: acme_global_remote_work_policy.docx, section '5. Cybersecurity, VPN, and Data Classification'].\n* Full-disk encryption (BitLocker on Windows or FileVault on macOS) is mandatory and is managed by Jamf/Intune MDM [Source: acme_global_remote_work_policy.docx, section '5. Cybersecurity, VPN, and Data Classification'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-7",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "5. Cybersecurity, VPN, and Data Classification",
+          "chunk_index": 7,
+          "text": "All remote computing devices connecting to Acme Global production systems, code repositories, or customer databases must route all traffic through the corporate WireGuard VPN with multi-factor authentication (MFA) enabled. Full-disk encryption (BitLocker on Windows or FileVault on macOS) is mandatory and managed by Jamf/Intune MDM.",
+          "similarity_score": 0.8109
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-8",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "5. Cybersecurity, VPN, and Data Classification",
+          "chunk_index": 8,
+          "text": "Under no circumstances may company confidential data be saved to personal cloud drives (Dropbox, iCloud, personal Google Drive) or processed through unapproved external consumer AI tools.",
+          "similarity_score": 0.6597
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-2",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 2,
+          "text": "Remote work eligibility begins upon successful completion of the standard 90-day probationary period. Employees classified under Remote Tier A are permitted to work 100% remotely from an approved home location. Tier B employees operate on a hybrid schedule requiring a minimum of two designated office days per week.",
+          "similarity_score": 0.642
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-1",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 1,
+          "text": "This policy defines the terms, expectations, and benefits associated with remote and hybrid work at Acme Global Technologies Inc. It applies to all permanent full-time and part-time employees worldwide. Contractors and temporary workers are governed by separate master service agreements.",
+          "similarity_score": 0.6339
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-0",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "Acme Global: Remote Work & Employee Benefits Policy\nDocument ID: POL-2026-RW01 | Version: 3.2 | Effective Date: January 1, 2026 | Classification: Internal",
+          "similarity_score": 0.6309
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-7",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "page": null,
+          "section": "5. Cybersecurity, VPN, and Data Classification",
+          "excerpt": "All remote computing devices connecting to Acme Global production systems, code repositories, or customer databases must route all traffic through the corporate WireGuard VPN with multi-factor authent..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 3630
+    },
+    {
+      "id": "q017",
+      "question": "Describe the SLS propulsion system including both core stage liquid engines and solid rocket boosters.",
+      "question_type": "multipart",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "nasa_artemis_mission_overview.docx",
+      "generated_answer": "The Space Launch System (SLS) Block 1 core stage is powered by four Aerojet Rocketdyne RS-25 engines, which produce 2.0 million pounds of thrust [Source: nasa_artemis_mission_overview.docx, section 2. Core Launch and Spacecraft Architecture]. Additionally, two five-segment solid rocket boosters provide an extra 7.2 million pounds of thrust at liftoff [Source: nasa_artemis_mission_overview.docx, section 2. Core Launch and Spacecraft Architecture].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-2",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Core Launch and Spacecraft Architecture",
+          "chunk_index": 2,
+          "text": "The Space Launch System (SLS) is NASA's super heavy-lift expendable launch vehicle. The SLS Block 1 core stage measures 212 feet in height, holds 733,000 gallons of cryogenic liquid hydrogen and liquid oxygen, and is powered by four Aerojet Rocketdyne RS-25 engines producing 2.0 million pounds of thrust. Two five-segment solid rocket boosters provide an additional 7.2 million pounds of thrust at liftoff.",
+          "similarity_score": 0.7823
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-5",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 5,
+          "text": "[Document Tables]:\nMission | Flight Date / Status | Configuration | Primary Objective\nArtemis I | Completed Nov 2022 | SLS Block 1 Crew + ESM | Uncrewed Distant Retrograde Orbit flight test around Moon\nArtemis II | Scheduled 2025 | SLS Block 1 Crewed | First crewed lunar flyby test carrying 4 astronauts on free-return trajectory\nArtemis III | Target 2026 | SLS Block 1B + Starship HLS | First crewed lunar south pole landing with two surface-walking astronauts",
+          "similarity_score": 0.6351
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-0",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "NASA Artemis Program: Lunar Exploration Architecture\nReference: NASA-SP-2026-ART | Public Domain Technical Briefing",
+          "similarity_score": 0.6226
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-3",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Core Launch and Spacecraft Architecture",
+          "chunk_index": 3,
+          "text": "The Orion Spacecraft accommodates four astronauts for missions up to 21 days in deep space without docking. Orion comprises the Crew Module manufactured by Lockheed Martin and the European Service Module (ESM) provided by Airbus, which supplies electrical power, propulsion, thermal control, and cabin atmosphere.",
+          "similarity_score": 0.6208
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-4",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 4,
+          "text": "The Lunar Gateway is an outpost orbiting the Moon in a Near-Rectilinear Halo Orbit (NRHO), providing vital support for long-term human lunar exploration. The lunar south pole is specifically targeted due to permanently shadowed craters containing water ice deposits in the regolith, which can be extracted for drinking water, oxygen generation, and rocket propellant production.",
+          "similarity_score": 0.6037
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-2",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "page": null,
+          "section": "2. Core Launch and Spacecraft Architecture",
+          "excerpt": "The Space Launch System (SLS) is NASA's super heavy-lift expendable launch vehicle. The SLS Block 1 core stage measures 212 feet in height, holds 733,000 gallons of cryogenic liquid hydrogen and liqui..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 3548
+    },
+    {
+      "id": "q018",
+      "question": "What is the update frequency requirement for public status page and internal stakeholders during P1 vs P2 incidents?",
+      "question_type": "multipart",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "cloud_infrastructure_incident_playbook.docx",
+      "generated_answer": "Based on the provided document, the Communications Lead maintains the public status page and provides internal stakeholder updates:\n- Every 30 minutes for P1 incidents.\n- Every 60 minutes for P2 incidents.\n\n[Source: cloud_infrastructure_incident_playbook.docx, section '2. Incident Response Team Roles']",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-3",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 3,
+          "text": "- Technical Lead (TL): Coordinates technical investigation, directs database administrators and backend engineers, and reviews hotfix pull requests prior to emergency staging deployment.\n- Communications Lead (CL): Maintains the public status page (status.acmecloud.io) and provides internal stakeholder updates every 30 minutes for P1 incidents and every 60 minutes for P2 incidents.",
+          "similarity_score": 0.7743
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-2",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 2,
+          "text": "Upon declaration of a P1 or P2 incident, an Incident Command Bridge is established on dedicated Slack channel #incident-war-room and a permanent Zoom bridge. The incident team consists of three mandatory roles:\n- Incident Commander (IC): Holds absolute decision-making authority over diagnostic steps, traffic failover, and rollbacks. Responsible for assigning tasks and shielding engineers from external executive interruptions.",
+          "similarity_score": 0.7344
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-5",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "chunk_index": 5,
+          "text": "[Document Tables]:\nSeverity | Definition & Impact | First Response SLA | Target Resolution SLA\nP1 - Critical | Complete outage of user-facing production APIs or data loss affecting >10% of active users. | < 15 minutes | < 2 hours\nP2 - Major | Core service degradation with impaired functionality; workaround unavailable. | < 30 minutes | < 4 hours\nP3 - Moderate | Partial system disruption; non-critical features affected or viable workaround exists. | < 2 hours | < 24 hours",
+          "similarity_score": 0.7208
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-4",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "chunk_index": 4,
+          "text": "A formal blameless post-mortem review is required for all P1 incidents and recurring P2 incidents. The review meeting must be held within 48 business hours of incident resolution. The resulting Post-Incident Report (PIR) must detail the chronological timeline, root cause analysis (using the 5-Whys methodology), detection shortcomings, and assigned Jira corrective action tickets with clear owners and 30-day completion milestones.",
+          "similarity_score": 0.7176
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-1",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Incident Classification Framework",
+          "chunk_index": 1,
+          "text": "This playbook governs the detection, triage, mitigation, and post-incident analysis of cloud infrastructure and application outages affecting Acme Cloud Services. All incidents must be classified within 10 minutes of alert ingestion.",
+          "similarity_score": 0.6687
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-3",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "excerpt": "- Technical Lead (TL): Coordinates technical investigation, directs database administrators and backend engineers, and reviews hotfix pull requests prior to emergency staging deployment.\n- Communicati..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 3815
+    },
+    {
+      "id": "q019",
+      "question": "How much financial reimbursement can a newly hired telecommuting employee claim for desk and chair purchases?",
+      "question_type": "reworded",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "acme_global_remote_work_policy.docx",
+      "generated_answer": "To ensure ergonomic and productive home workspaces, eligible Tier A remote employees are provided a one-time setup reimbursement of up to $1,200 USD for home office equipment [Source: acme_global_remote_work_policy.docx, section '3. Home Office Equipment Stipend and IT Provisioning']. Within this setup reimbursement, specific maximum allowances for desk and chair purchases include:\n- Ergonomic Desk Chair: Up to $400 [Source: acme_global_remote_work_policy.docx, section '5. Cybersecurity, VPN, and Data Classification']\n- Standing Desk / Desk Converter: Up to $450 [Source: acme_global_remote_work_policy.docx, section '5. Cybersecurity, VPN, and Data Classification']",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-4",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Home Office Equipment Stipend and IT Provisioning",
+          "chunk_index": 4,
+          "text": "To ensure ergonomic and productive home workspaces, Acme Global provides eligible Tier A remote employees with a one-time setup reimbursement of up to $1,200 USD. Claims must be submitted via the expense portal accompanied by valid itemized receipts within 60 days of remote classification.\nIn addition, permanent remote employees receive a recurring monthly broadband allowance of $75 USD, disbursed automatically with payroll on the 25th of each calendar month.",
+          "similarity_score": 0.7494
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-9",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "5. Cybersecurity, VPN, and Data Classification",
+          "chunk_index": 9,
+          "text": "[Document Tables]:\nItem Category | Maximum Allowance (USD) | Refresh Cycle | Ownership Policy\nErgonomic Desk Chair | $400 | 36 Months | Employee Retains\nStanding Desk / Desk Converter | $450 | 48 Months | Employee Retains\nDual Monitor Setup (up to 27 inch) | $350 | 36 Months | Acme Property\nNoise-Canceling Headset | $150 | 24 Months | Employee Retains\nCompany Laptop (MacBook Pro / ThinkPad) | Provided by IT | 36 Months | Acme Property (Mandatory Return)",
+          "similarity_score": 0.7116
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-0",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "Acme Global: Remote Work & Employee Benefits Policy\nDocument ID: POL-2026-RW01 | Version: 3.2 | Effective Date: January 1, 2026 | Classification: Internal",
+          "similarity_score": 0.6595
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-2",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 2,
+          "text": "Remote work eligibility begins upon successful completion of the standard 90-day probationary period. Employees classified under Remote Tier A are permitted to work 100% remotely from an approved home location. Tier B employees operate on a hybrid schedule requiring a minimum of two designated office days per week.",
+          "similarity_score": 0.6564
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-1",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 1,
+          "text": "This policy defines the terms, expectations, and benefits associated with remote and hybrid work at Acme Global Technologies Inc. It applies to all permanent full-time and part-time employees worldwide. Contractors and temporary workers are governed by separate master service agreements.",
+          "similarity_score": 0.6246
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-4",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "page": null,
+          "section": "3. Home Office Equipment Stipend and IT Provisioning",
+          "excerpt": "To ensure ergonomic and productive home workspaces, Acme Global provides eligible Tier A remote employees with a one-time setup reimbursement of up to $1,200 USD. Claims must be submitted via the expe..."
+        }
+      ],
+      "faithfulness_score": 0.5,
+      "correctness_score": 1.0,
+      "latency_ms": 4128
+    },
+    {
+      "id": "q020",
+      "question": "During which daily UTC hours are staff members expected to be online and reachable on Slack?",
+      "question_type": "reworded",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "acme_global_remote_work_policy.docx",
+      "generated_answer": "All remote employees are expected to maintain core working hours between 10:00 UTC and 16:00 UTC, during which they must be available on Slack and email [Source: acme_global_remote_work_policy.docx, section '2. Working Hours, Availability, and Time Tracking'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-3",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Working Hours, Availability, and Time Tracking",
+          "chunk_index": 3,
+          "text": "All remote employees must maintain core working hours between 10:00 UTC and 16:00 UTC to facilitate cross-timezone collaboration. During core hours, team members are expected to be available on Slack and email. Total weekly commitment is 40 hours for full-time personnel.\nOvertime must be pre-approved in writing by a department director. Non-exempt employees logging more than 40 hours in a standard pay period without prior written approval will receive a formal compliance notice.",
+          "similarity_score": 0.7536
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-2",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 2,
+          "text": "Upon declaration of a P1 or P2 incident, an Incident Command Bridge is established on dedicated Slack channel #incident-war-room and a permanent Zoom bridge. The incident team consists of three mandatory roles:\n- Incident Commander (IC): Holds absolute decision-making authority over diagnostic steps, traffic failover, and rollbacks. Responsible for assigning tasks and shielding engineers from external executive interruptions.",
+          "similarity_score": 0.6606
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-3",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 3,
+          "text": "- Technical Lead (TL): Coordinates technical investigation, directs database administrators and backend engineers, and reviews hotfix pull requests prior to emergency staging deployment.\n- Communications Lead (CL): Maintains the public status page (status.acmecloud.io) and provides internal stakeholder updates every 30 minutes for P1 incidents and every 60 minutes for P2 incidents.",
+          "similarity_score": 0.6368
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-5",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "chunk_index": 5,
+          "text": "[Document Tables]:\nSeverity | Definition & Impact | First Response SLA | Target Resolution SLA\nP1 - Critical | Complete outage of user-facing production APIs or data loss affecting >10% of active users. | < 15 minutes | < 2 hours\nP2 - Major | Core service degradation with impaired functionality; workaround unavailable. | < 30 minutes | < 4 hours\nP3 - Moderate | Partial system disruption; non-critical features affected or viable workaround exists. | < 2 hours | < 24 hours",
+          "similarity_score": 0.61
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-2",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 2,
+          "text": "Remote work eligibility begins upon successful completion of the standard 90-day probationary period. Employees classified under Remote Tier A are permitted to work 100% remotely from an approved home location. Tier B employees operate on a hybrid schedule requiring a minimum of two designated office days per week.",
+          "similarity_score": 0.5864
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-3",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "page": null,
+          "section": "2. Working Hours, Availability, and Time Tracking",
+          "excerpt": "All remote employees must maintain core working hours between 10:00 UTC and 16:00 UTC to facilitate cross-timezone collaboration. During core hours, team members are expected to be available on Slack ..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 3554
+    },
+    {
+      "id": "q021",
+      "question": "What is the resolution deadline for a catastrophic system outage affecting more than 10 percent of our users?",
+      "question_type": "reworded",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "cloud_infrastructure_incident_playbook.docx",
+      "generated_answer": "The target resolution SLA for a P1 - Critical incident (defined as a complete outage of user-facing production APIs or data loss affecting greater than 10% of active users) is less than 2 hours [Source: cloud_infrastructure_incident_playbook.docx, section '3. Blameless Post-Mortem Policy'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-5",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "chunk_index": 5,
+          "text": "[Document Tables]:\nSeverity | Definition & Impact | First Response SLA | Target Resolution SLA\nP1 - Critical | Complete outage of user-facing production APIs or data loss affecting >10% of active users. | < 15 minutes | < 2 hours\nP2 - Major | Core service degradation with impaired functionality; workaround unavailable. | < 30 minutes | < 4 hours\nP3 - Moderate | Partial system disruption; non-critical features affected or viable workaround exists. | < 2 hours | < 24 hours",
+          "similarity_score": 0.7174
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-1",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Incident Classification Framework",
+          "chunk_index": 1,
+          "text": "This playbook governs the detection, triage, mitigation, and post-incident analysis of cloud infrastructure and application outages affecting Acme Cloud Services. All incidents must be classified within 10 minutes of alert ingestion.",
+          "similarity_score": 0.6907
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-4",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "chunk_index": 4,
+          "text": "A formal blameless post-mortem review is required for all P1 incidents and recurring P2 incidents. The review meeting must be held within 48 business hours of incident resolution. The resulting Post-Incident Report (PIR) must detail the chronological timeline, root cause analysis (using the 5-Whys methodology), detection shortcomings, and assigned Jira corrective action tickets with clear owners and 30-day completion milestones.",
+          "similarity_score": 0.6815
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-3",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 3,
+          "text": "- Technical Lead (TL): Coordinates technical investigation, directs database administrators and backend engineers, and reviews hotfix pull requests prior to emergency staging deployment.\n- Communications Lead (CL): Maintains the public status page (status.acmecloud.io) and provides internal stakeholder updates every 30 minutes for P1 incidents and every 60 minutes for P2 incidents.",
+          "similarity_score": 0.6376
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-2",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 2,
+          "text": "Upon declaration of a P1 or P2 incident, an Incident Command Bridge is established on dedicated Slack channel #incident-war-room and a permanent Zoom bridge. The incident team consists of three mandatory roles:\n- Incident Commander (IC): Holds absolute decision-making authority over diagnostic steps, traffic failover, and rollbacks. Responsible for assigning tasks and shielding engineers from external executive interruptions.",
+          "similarity_score": 0.6326
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-5",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "excerpt": "[Document Tables]:\nSeverity | Definition & Impact | First Response SLA | Target Resolution SLA\nP1 - Critical | Complete outage of user-facing production APIs or data loss affecting >10% of active user..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 4382
+    },
+    {
+      "id": "q022",
+      "question": "Which rocket engines are mounted on the main stage of NASA's heavy lift Moon rocket?",
+      "question_type": "reworded",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "nasa_artemis_mission_overview.docx",
+      "generated_answer": "The SLS Block 1 core stage is powered by four Aerojet Rocketdyne RS-25 engines [Source: nasa_artemis_mission_overview.docx, section '2. Core Launch and Spacecraft Architecture'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-2",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Core Launch and Spacecraft Architecture",
+          "chunk_index": 2,
+          "text": "The Space Launch System (SLS) is NASA's super heavy-lift expendable launch vehicle. The SLS Block 1 core stage measures 212 feet in height, holds 733,000 gallons of cryogenic liquid hydrogen and liquid oxygen, and is powered by four Aerojet Rocketdyne RS-25 engines producing 2.0 million pounds of thrust. Two five-segment solid rocket boosters provide an additional 7.2 million pounds of thrust at liftoff.",
+          "similarity_score": 0.7318
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-5",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 5,
+          "text": "[Document Tables]:\nMission | Flight Date / Status | Configuration | Primary Objective\nArtemis I | Completed Nov 2022 | SLS Block 1 Crew + ESM | Uncrewed Distant Retrograde Orbit flight test around Moon\nArtemis II | Scheduled 2025 | SLS Block 1 Crewed | First crewed lunar flyby test carrying 4 astronauts on free-return trajectory\nArtemis III | Target 2026 | SLS Block 1B + Starship HLS | First crewed lunar south pole landing with two surface-walking astronauts",
+          "similarity_score": 0.6624
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-1",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Program Overview and Strategic Objectives",
+          "chunk_index": 1,
+          "text": "The Artemis campaign represents humanity's return to the Moon, led by NASA with international partners including the European Space Agency (ESA), Japan Aerospace Exploration Agency (JAXA), and Canadian Space Agency (CSA). Unlike the Apollo program, Artemis focuses on sustainable, long-term lunar presence and serves as a proving ground for future human missions to Mars.",
+          "similarity_score": 0.6341
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-0",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "NASA Artemis Program: Lunar Exploration Architecture\nReference: NASA-SP-2026-ART | Public Domain Technical Briefing",
+          "similarity_score": 0.6332
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-3",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Core Launch and Spacecraft Architecture",
+          "chunk_index": 3,
+          "text": "The Orion Spacecraft accommodates four astronauts for missions up to 21 days in deep space without docking. Orion comprises the Crew Module manufactured by Lockheed Martin and the European Service Module (ESM) provided by Airbus, which supplies electrical power, propulsion, thermal control, and cabin atmosphere.",
+          "similarity_score": 0.6138
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-2",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "page": null,
+          "section": "2. Core Launch and Spacecraft Architecture",
+          "excerpt": "The Space Launch System (SLS) is NASA's super heavy-lift expendable launch vehicle. The SLS Block 1 core stage measures 212 feet in height, holds 733,000 gallons of cryogenic liquid hydrogen and liqui..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 4724
+    },
+    {
+      "id": "q023",
+      "question": "How many days of paid vacation does a full-time staff member earn in total each calendar year?",
+      "question_type": "reworded",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "acme_global_remote_work_policy.docx",
+      "generated_answer": "Full-time permanent employees accrue 25 business days of paid annual vacation leave per calendar year [Source: acme_global_remote_work_policy.docx, section '4. Annual Leave, Sick Leave, and Paid Time Off (PTO)'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-5",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+          "chunk_index": 5,
+          "text": "Full-time permanent employees accrue 25 business days of paid annual vacation leave per calendar year. Annual leave accrues on the first business day of each month at a rate of 2.08 days per month. A maximum of 5 unused vacation days may be rolled over into the subsequent calendar year; rollover days expire on March 31st if unspent.",
+          "similarity_score": 0.767
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-6",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+          "chunk_index": 6,
+          "text": "Employees are entitled to 10 paid sick days annually, effective from day one of employment without probation. Absences exceeding 3 consecutive business days require medical certification from a licensed physician.",
+          "similarity_score": 0.6901
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-3",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Working Hours, Availability, and Time Tracking",
+          "chunk_index": 3,
+          "text": "All remote employees must maintain core working hours between 10:00 UTC and 16:00 UTC to facilitate cross-timezone collaboration. During core hours, team members are expected to be available on Slack and email. Total weekly commitment is 40 hours for full-time personnel.\nOvertime must be pre-approved in writing by a department director. Non-exempt employees logging more than 40 hours in a standard pay period without prior written approval will receive a formal compliance notice.",
+          "similarity_score": 0.6297
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-2",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 2,
+          "text": "Remote work eligibility begins upon successful completion of the standard 90-day probationary period. Employees classified under Remote Tier A are permitted to work 100% remotely from an approved home location. Tier B employees operate on a hybrid schedule requiring a minimum of two designated office days per week.",
+          "similarity_score": 0.6072
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-4",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Home Office Equipment Stipend and IT Provisioning",
+          "chunk_index": 4,
+          "text": "To ensure ergonomic and productive home workspaces, Acme Global provides eligible Tier A remote employees with a one-time setup reimbursement of up to $1,200 USD. Claims must be submitted via the expense portal accompanied by valid itemized receipts within 60 days of remote classification.\nIn addition, permanent remote employees receive a recurring monthly broadband allowance of $75 USD, disbursed automatically with payroll on the 25th of each calendar month.",
+          "similarity_score": 0.5786
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-5",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "page": null,
+          "section": "4. Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+          "excerpt": "Full-time permanent employees accrue 25 business days of paid annual vacation leave per calendar year. Annual leave accrues on the first business day of each month at a rate of 2.08 days per month. A ..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 4677
+    },
+    {
+      "id": "q024",
+      "question": "Who supplies the service module that provides propulsion and electrical power for the Orion spacecraft?",
+      "question_type": "reworded",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "nasa_artemis_mission_overview.docx",
+      "generated_answer": "The European Service Module (ESM) for the Orion spacecraft is provided by Airbus [Source: nasa_artemis_mission_overview.docx, section '2. Core Launch and Spacecraft Architecture'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-3",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Core Launch and Spacecraft Architecture",
+          "chunk_index": 3,
+          "text": "The Orion Spacecraft accommodates four astronauts for missions up to 21 days in deep space without docking. Orion comprises the Crew Module manufactured by Lockheed Martin and the European Service Module (ESM) provided by Airbus, which supplies electrical power, propulsion, thermal control, and cabin atmosphere.",
+          "similarity_score": 0.7994
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-2",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Core Launch and Spacecraft Architecture",
+          "chunk_index": 2,
+          "text": "The Space Launch System (SLS) is NASA's super heavy-lift expendable launch vehicle. The SLS Block 1 core stage measures 212 feet in height, holds 733,000 gallons of cryogenic liquid hydrogen and liquid oxygen, and is powered by four Aerojet Rocketdyne RS-25 engines producing 2.0 million pounds of thrust. Two five-segment solid rocket boosters provide an additional 7.2 million pounds of thrust at liftoff.",
+          "similarity_score": 0.643
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-0",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "NASA Artemis Program: Lunar Exploration Architecture\nReference: NASA-SP-2026-ART | Public Domain Technical Briefing",
+          "similarity_score": 0.627
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-5",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 5,
+          "text": "[Document Tables]:\nMission | Flight Date / Status | Configuration | Primary Objective\nArtemis I | Completed Nov 2022 | SLS Block 1 Crew + ESM | Uncrewed Distant Retrograde Orbit flight test around Moon\nArtemis II | Scheduled 2025 | SLS Block 1 Crewed | First crewed lunar flyby test carrying 4 astronauts on free-return trajectory\nArtemis III | Target 2026 | SLS Block 1B + Starship HLS | First crewed lunar south pole landing with two surface-walking astronauts",
+          "similarity_score": 0.6209
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-1",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Program Overview and Strategic Objectives",
+          "chunk_index": 1,
+          "text": "The Artemis campaign represents humanity's return to the Moon, led by NASA with international partners including the European Space Agency (ESA), Japan Aerospace Exploration Agency (JAXA), and Canadian Space Agency (CSA). Unlike the Apollo program, Artemis focuses on sustainable, long-term lunar presence and serves as a proving ground for future human missions to Mars.",
+          "similarity_score": 0.6197
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-3",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "page": null,
+          "section": "2. Core Launch and Spacecraft Architecture",
+          "excerpt": "The Orion Spacecraft accommodates four astronauts for missions up to 21 days in deep space without docking. Orion comprises the Crew Module manufactured by Lockheed Martin and the European Service Mod..."
+        }
+      ],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 4685
+    },
+    {
+      "id": "q025",
+      "question": "How soon must a retrospective incident investigation meeting occur after a critical production outage is fixed?",
+      "question_type": "reworded",
+      "answerable_ground_truth": true,
+      "system_answerable": true,
+      "expected_source_doc": "cloud_infrastructure_incident_playbook.docx",
+      "generated_answer": "A formal blameless post-mortem review for P1 incidents must be held within 48 business hours of incident resolution [Source: cloud_infrastructure_incident_playbook.docx, section '3. Blameless Post-Mortem Policy'].",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-4",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "chunk_index": 4,
+          "text": "A formal blameless post-mortem review is required for all P1 incidents and recurring P2 incidents. The review meeting must be held within 48 business hours of incident resolution. The resulting Post-Incident Report (PIR) must detail the chronological timeline, root cause analysis (using the 5-Whys methodology), detection shortcomings, and assigned Jira corrective action tickets with clear owners and 30-day completion milestones.",
+          "similarity_score": 0.7673
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-2",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 2,
+          "text": "Upon declaration of a P1 or P2 incident, an Incident Command Bridge is established on dedicated Slack channel #incident-war-room and a permanent Zoom bridge. The incident team consists of three mandatory roles:\n- Incident Commander (IC): Holds absolute decision-making authority over diagnostic steps, traffic failover, and rollbacks. Responsible for assigning tasks and shielding engineers from external executive interruptions.",
+          "similarity_score": 0.6751
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-1",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Incident Classification Framework",
+          "chunk_index": 1,
+          "text": "This playbook governs the detection, triage, mitigation, and post-incident analysis of cloud infrastructure and application outages affecting Acme Cloud Services. All incidents must be classified within 10 minutes of alert ingestion.",
+          "similarity_score": 0.6591
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-3",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Incident Response Team Roles",
+          "chunk_index": 3,
+          "text": "- Technical Lead (TL): Coordinates technical investigation, directs database administrators and backend engineers, and reviews hotfix pull requests prior to emergency staging deployment.\n- Communications Lead (CL): Maintains the public status page (status.acmecloud.io) and provides internal stakeholder updates every 30 minutes for P1 incidents and every 60 minutes for P2 incidents.",
+          "similarity_score": 0.6505
+        },
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-0",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "Cloud Engineering: Production Incident Response Playbook\nDocument ID: SRE-PB-2026 | Version: 4.1 | Owner: Reliability Engineering | Classification: Confidential",
+          "similarity_score": 0.6437
+        }
+      ],
+      "citations": [
+        {
+          "chunk_id": "a50660c8-2319-4bca-bfb8-04c4defdd307-chunk-4",
+          "doc_id": "a50660c8-2319-4bca-bfb8-04c4defdd307",
+          "filename": "cloud_infrastructure_incident_playbook.docx",
+          "page": null,
+          "section": "3. Blameless Post-Mortem Policy",
+          "excerpt": "A formal blameless post-mortem review is required for all P1 incidents and recurring P2 incidents. The review meeting must be held within 48 business hours of incident resolution. The resulting Post-I..."
+        }
+      ],
+      "faithfulness_score": 0.5,
+      "correctness_score": 1.0,
+      "latency_ms": 4567
+    },
+    {
+      "id": "q026",
+      "question": "What was the stock price and annual net revenue of Acme Global in 2025?",
+      "question_type": "unanswerable",
+      "answerable_ground_truth": false,
+      "system_answerable": false,
+      "expected_source_doc": null,
+      "generated_answer": "The documents do not contain sufficient information to answer this question.",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-0",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "Acme Global: Remote Work & Employee Benefits Policy\nDocument ID: POL-2026-RW01 | Version: 3.2 | Effective Date: January 1, 2026 | Classification: Internal",
+          "similarity_score": 0.6186
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-4",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Home Office Equipment Stipend and IT Provisioning",
+          "chunk_index": 4,
+          "text": "To ensure ergonomic and productive home workspaces, Acme Global provides eligible Tier A remote employees with a one-time setup reimbursement of up to $1,200 USD. Claims must be submitted via the expense portal accompanied by valid itemized receipts within 60 days of remote classification.\nIn addition, permanent remote employees receive a recurring monthly broadband allowance of $75 USD, disbursed automatically with payroll on the 25th of each calendar month.",
+          "similarity_score": 0.6133
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-7",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "5. Cybersecurity, VPN, and Data Classification",
+          "chunk_index": 7,
+          "text": "All remote computing devices connecting to Acme Global production systems, code repositories, or customer databases must route all traffic through the corporate WireGuard VPN with multi-factor authentication (MFA) enabled. Full-disk encryption (BitLocker on Windows or FileVault on macOS) is mandatory and managed by Jamf/Intune MDM.",
+          "similarity_score": 0.5917
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-1",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 1,
+          "text": "This policy defines the terms, expectations, and benefits associated with remote and hybrid work at Acme Global Technologies Inc. It applies to all permanent full-time and part-time employees worldwide. Contractors and temporary workers are governed by separate master service agreements.",
+          "similarity_score": 0.5869
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-9",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "5. Cybersecurity, VPN, and Data Classification",
+          "chunk_index": 9,
+          "text": "[Document Tables]:\nItem Category | Maximum Allowance (USD) | Refresh Cycle | Ownership Policy\nErgonomic Desk Chair | $400 | 36 Months | Employee Retains\nStanding Desk / Desk Converter | $450 | 48 Months | Employee Retains\nDual Monitor Setup (up to 27 inch) | $350 | 36 Months | Acme Property\nNoise-Canceling Headset | $150 | 24 Months | Employee Retains\nCompany Laptop (MacBook Pro / ThinkPad) | Provided by IT | 36 Months | Acme Property (Mandatory Return)",
+          "similarity_score": 0.5858
+        }
+      ],
+      "citations": [],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 4401
+    },
+    {
+      "id": "q027",
+      "question": "What is the exact base salary and bonus compensation structure for the Acme Chief Executive Officer?",
+      "question_type": "unanswerable",
+      "answerable_ground_truth": false,
+      "system_answerable": false,
+      "expected_source_doc": null,
+      "generated_answer": "The documents do not contain sufficient information to answer this question.",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-4",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Home Office Equipment Stipend and IT Provisioning",
+          "chunk_index": 4,
+          "text": "To ensure ergonomic and productive home workspaces, Acme Global provides eligible Tier A remote employees with a one-time setup reimbursement of up to $1,200 USD. Claims must be submitted via the expense portal accompanied by valid itemized receipts within 60 days of remote classification.\nIn addition, permanent remote employees receive a recurring monthly broadband allowance of $75 USD, disbursed automatically with payroll on the 25th of each calendar month.",
+          "similarity_score": 0.6524
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-0",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "Acme Global: Remote Work & Employee Benefits Policy\nDocument ID: POL-2026-RW01 | Version: 3.2 | Effective Date: January 1, 2026 | Classification: Internal",
+          "similarity_score": 0.6464
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-9",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "5. Cybersecurity, VPN, and Data Classification",
+          "chunk_index": 9,
+          "text": "[Document Tables]:\nItem Category | Maximum Allowance (USD) | Refresh Cycle | Ownership Policy\nErgonomic Desk Chair | $400 | 36 Months | Employee Retains\nStanding Desk / Desk Converter | $450 | 48 Months | Employee Retains\nDual Monitor Setup (up to 27 inch) | $350 | 36 Months | Acme Property\nNoise-Canceling Headset | $150 | 24 Months | Employee Retains\nCompany Laptop (MacBook Pro / ThinkPad) | Provided by IT | 36 Months | Acme Property (Mandatory Return)",
+          "similarity_score": 0.6324
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-1",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 1,
+          "text": "This policy defines the terms, expectations, and benefits associated with remote and hybrid work at Acme Global Technologies Inc. It applies to all permanent full-time and part-time employees worldwide. Contractors and temporary workers are governed by separate master service agreements.",
+          "similarity_score": 0.629
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-7",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "5. Cybersecurity, VPN, and Data Classification",
+          "chunk_index": 7,
+          "text": "All remote computing devices connecting to Acme Global production systems, code repositories, or customer databases must route all traffic through the corporate WireGuard VPN with multi-factor authentication (MFA) enabled. Full-disk encryption (BitLocker on Windows or FileVault on macOS) is mandatory and managed by Jamf/Intune MDM.",
+          "similarity_score": 0.5975
+        }
+      ],
+      "citations": [],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 4482
+    },
+    {
+      "id": "q028",
+      "question": "What date has NASA scheduled for landing the first human crew on the surface of Mars?",
+      "question_type": "unanswerable",
+      "answerable_ground_truth": false,
+      "system_answerable": false,
+      "expected_source_doc": null,
+      "generated_answer": "The documents do not contain sufficient information to answer this question.",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-5",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 5,
+          "text": "[Document Tables]:\nMission | Flight Date / Status | Configuration | Primary Objective\nArtemis I | Completed Nov 2022 | SLS Block 1 Crew + ESM | Uncrewed Distant Retrograde Orbit flight test around Moon\nArtemis II | Scheduled 2025 | SLS Block 1 Crewed | First crewed lunar flyby test carrying 4 astronauts on free-return trajectory\nArtemis III | Target 2026 | SLS Block 1B + Starship HLS | First crewed lunar south pole landing with two surface-walking astronauts",
+          "similarity_score": 0.6674
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-1",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Program Overview and Strategic Objectives",
+          "chunk_index": 1,
+          "text": "The Artemis campaign represents humanity's return to the Moon, led by NASA with international partners including the European Space Agency (ESA), Japan Aerospace Exploration Agency (JAXA), and Canadian Space Agency (CSA). Unlike the Apollo program, Artemis focuses on sustainable, long-term lunar presence and serves as a proving ground for future human missions to Mars.",
+          "similarity_score": 0.6521
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-3",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Core Launch and Spacecraft Architecture",
+          "chunk_index": 3,
+          "text": "The Orion Spacecraft accommodates four astronauts for missions up to 21 days in deep space without docking. Orion comprises the Crew Module manufactured by Lockheed Martin and the European Service Module (ESM) provided by Airbus, which supplies electrical power, propulsion, thermal control, and cabin atmosphere.",
+          "similarity_score": 0.6266
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-6",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 6,
+          "text": "Artemis IV | Target 2028 | SLS Block 1B + Gateway | Delivery of I-Hab module to Lunar Gateway and second crewed landing",
+          "similarity_score": 0.6179
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-0",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "NASA Artemis Program: Lunar Exploration Architecture\nReference: NASA-SP-2026-ART | Public Domain Technical Briefing",
+          "similarity_score": 0.5997
+        }
+      ],
+      "citations": [],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 4207
+    },
+    {
+      "id": "q029",
+      "question": "Which medical insurance provider does Acme Global contract with for dental benefits in Europe?",
+      "question_type": "unanswerable",
+      "answerable_ground_truth": false,
+      "system_answerable": false,
+      "expected_source_doc": null,
+      "generated_answer": "The documents do not contain sufficient information to answer this question.",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-0",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "Acme Global: Remote Work & Employee Benefits Policy\nDocument ID: POL-2026-RW01 | Version: 3.2 | Effective Date: January 1, 2026 | Classification: Internal",
+          "similarity_score": 0.6733
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-4",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "3. Home Office Equipment Stipend and IT Provisioning",
+          "chunk_index": 4,
+          "text": "To ensure ergonomic and productive home workspaces, Acme Global provides eligible Tier A remote employees with a one-time setup reimbursement of up to $1,200 USD. Claims must be submitted via the expense portal accompanied by valid itemized receipts within 60 days of remote classification.\nIn addition, permanent remote employees receive a recurring monthly broadband allowance of $75 USD, disbursed automatically with payroll on the 25th of each calendar month.",
+          "similarity_score": 0.6493
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-1",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Purpose and Scope",
+          "chunk_index": 1,
+          "text": "This policy defines the terms, expectations, and benefits associated with remote and hybrid work at Acme Global Technologies Inc. It applies to all permanent full-time and part-time employees worldwide. Contractors and temporary workers are governed by separate master service agreements.",
+          "similarity_score": 0.6242
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-9",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "5. Cybersecurity, VPN, and Data Classification",
+          "chunk_index": 9,
+          "text": "[Document Tables]:\nItem Category | Maximum Allowance (USD) | Refresh Cycle | Ownership Policy\nErgonomic Desk Chair | $400 | 36 Months | Employee Retains\nStanding Desk / Desk Converter | $450 | 48 Months | Employee Retains\nDual Monitor Setup (up to 27 inch) | $350 | 36 Months | Acme Property\nNoise-Canceling Headset | $150 | 24 Months | Employee Retains\nCompany Laptop (MacBook Pro / ThinkPad) | Provided by IT | 36 Months | Acme Property (Mandatory Return)",
+          "similarity_score": 0.6043
+        },
+        {
+          "chunk_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821-chunk-7",
+          "doc_id": "94ea4552-4da7-4fdb-adf8-ccbd24a8f821",
+          "filename": "acme_global_remote_work_policy.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "5. Cybersecurity, VPN, and Data Classification",
+          "chunk_index": 7,
+          "text": "All remote computing devices connecting to Acme Global production systems, code repositories, or customer databases must route all traffic through the corporate WireGuard VPN with multi-factor authentication (MFA) enabled. Full-disk encryption (BitLocker on Windows or FileVault on macOS) is mandatory and managed by Jamf/Intune MDM.",
+          "similarity_score": 0.5942
+        }
+      ],
+      "citations": [],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 4148
+    },
+    {
+      "id": "q030",
+      "question": "What are the names of the astronauts assigned to walk on the lunar surface during the Artemis V mission?",
+      "question_type": "unanswerable",
+      "answerable_ground_truth": false,
+      "system_answerable": false,
+      "expected_source_doc": null,
+      "generated_answer": "The documents do not contain sufficient information to answer this question.",
+      "retrieved_chunks": [
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-6",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 6,
+          "text": "Artemis IV | Target 2028 | SLS Block 1B + Gateway | Delivery of I-Hab module to Lunar Gateway and second crewed landing",
+          "similarity_score": 0.6953
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-5",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "4. Lunar Gateway and South Pole Resource Utilization",
+          "chunk_index": 5,
+          "text": "[Document Tables]:\nMission | Flight Date / Status | Configuration | Primary Objective\nArtemis I | Completed Nov 2022 | SLS Block 1 Crew + ESM | Uncrewed Distant Retrograde Orbit flight test around Moon\nArtemis II | Scheduled 2025 | SLS Block 1 Crewed | First crewed lunar flyby test carrying 4 astronauts on free-return trajectory\nArtemis III | Target 2026 | SLS Block 1B + Starship HLS | First crewed lunar south pole landing with two surface-walking astronauts",
+          "similarity_score": 0.6929
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-1",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "1. Program Overview and Strategic Objectives",
+          "chunk_index": 1,
+          "text": "The Artemis campaign represents humanity's return to the Moon, led by NASA with international partners including the European Space Agency (ESA), Japan Aerospace Exploration Agency (JAXA), and Canadian Space Agency (CSA). Unlike the Apollo program, Artemis focuses on sustainable, long-term lunar presence and serves as a proving ground for future human missions to Mars.",
+          "similarity_score": 0.6797
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-0",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "Overview",
+          "chunk_index": 0,
+          "text": "NASA Artemis Program: Lunar Exploration Architecture\nReference: NASA-SP-2026-ART | Public Domain Technical Briefing",
+          "similarity_score": 0.6483
+        },
+        {
+          "chunk_id": "48e75605-24c4-4c23-af50-18f36d188aee-chunk-3",
+          "doc_id": "48e75605-24c4-4c23-af50-18f36d188aee",
+          "filename": "nasa_artemis_mission_overview.docx",
+          "file_type": "docx",
+          "page": null,
+          "section": "2. Core Launch and Spacecraft Architecture",
+          "chunk_index": 3,
+          "text": "The Orion Spacecraft accommodates four astronauts for missions up to 21 days in deep space without docking. Orion comprises the Crew Module manufactured by Lockheed Martin and the European Service Module (ESM) provided by Airbus, which supplies electrical power, propulsion, thermal control, and cabin atmosphere.",
+          "similarity_score": 0.6349
+        }
+      ],
+      "citations": [],
+      "faithfulness_score": 1.0,
+      "correctness_score": 1.0,
+      "latency_ms": 4907
+    }
+  ]
+}
