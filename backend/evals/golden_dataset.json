@@ -1,1 +1,272 @@
-[]
+[
+  {
+    "id": "q001",
+    "question": "What is the maximum reimbursement for home office equipment provided to Tier A remote employees?",
+    "question_type": "factual",
+    "expected_source_doc": "acme_global_remote_work_policy.docx",
+    "expected_location": "Section 3: Home Office Equipment Stipend and IT Provisioning",
+    "reference_answer": "Eligible Tier A remote employees receive a one-time equipment setup reimbursement of up to $1,200 USD.",
+    "answerable": true
+  },
+  {
+    "id": "q002",
+    "question": "What are the required core working hours for remote employees at Acme Global?",
+    "question_type": "factual",
+    "expected_source_doc": "acme_global_remote_work_policy.docx",
+    "expected_location": "Section 2: Working Hours, Availability, and Time Tracking",
+    "reference_answer": "Core working hours are between 10:00 UTC and 16:00 UTC to facilitate cross-timezone collaboration.",
+    "answerable": true
+  },
+  {
+    "id": "q003",
+    "question": "How much recurring monthly broadband allowance is disbursed to remote employees?",
+    "question_type": "factual",
+    "expected_source_doc": "acme_global_remote_work_policy.docx",
+    "expected_location": "Section 3: Home Office Equipment Stipend and IT Provisioning",
+    "reference_answer": "Permanent remote employees receive a recurring monthly broadband allowance of $75 USD disbursed with payroll on the 25th of each month.",
+    "answerable": true
+  },
+  {
+    "id": "q004",
+    "question": "How many days of paid annual vacation leave do permanent full-time employees accrue per year?",
+    "question_type": "factual",
+    "expected_source_doc": "acme_global_remote_work_policy.docx",
+    "expected_location": "Section 4: Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+    "reference_answer": "Full-time permanent employees accrue 25 business days of paid annual vacation leave per calendar year at a rate of 2.08 days per month.",
+    "answerable": true
+  },
+  {
+    "id": "q005",
+    "question": "How many unused vacation days can be rolled over to the following year and when do they expire?",
+    "question_type": "factual",
+    "expected_source_doc": "acme_global_remote_work_policy.docx",
+    "expected_location": "Section 4: Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+    "reference_answer": "A maximum of 5 unused vacation days may be rolled over into the next calendar year, and they expire on March 31st if unspent.",
+    "answerable": true
+  },
+  {
+    "id": "q006",
+    "question": "What are the target first response and resolution SLAs for a P1 critical incident?",
+    "question_type": "factual",
+    "expected_source_doc": "cloud_infrastructure_incident_playbook.docx",
+    "expected_location": "1. Incident Classification Framework",
+    "reference_answer": "A P1 critical incident requires a first response in under 15 minutes and a target resolution in under 2 hours.",
+    "answerable": true
+  },
+  {
+    "id": "q007",
+    "question": "What is the timeframe for holding a blameless post-mortem review following a P1 incident?",
+    "question_type": "factual",
+    "expected_source_doc": "cloud_infrastructure_incident_playbook.docx",
+    "expected_location": "3. Blameless Post-Mortem Policy",
+    "reference_answer": "The blameless post-mortem review meeting must be held within 48 business hours of incident resolution.",
+    "answerable": true
+  },
+  {
+    "id": "q008",
+    "question": "What engines power the Space Launch System (SLS) core stage and how much thrust do they produce?",
+    "question_type": "factual",
+    "expected_source_doc": "nasa_artemis_mission_overview.docx",
+    "expected_location": "2. Core Launch and Spacecraft Architecture",
+    "reference_answer": "The SLS core stage is powered by four Aerojet Rocketdyne RS-25 engines producing 2.0 million pounds of thrust.",
+    "answerable": true
+  },
+  {
+    "id": "q009",
+    "question": "What is the primary objective of the Artemis III mission?",
+    "question_type": "factual",
+    "expected_source_doc": "nasa_artemis_mission_overview.docx",
+    "expected_location": "3. Mission Flight Manifest",
+    "reference_answer": "Artemis III is the first crewed lunar south pole landing with two surface-walking astronauts.",
+    "answerable": true
+  },
+  {
+    "id": "q010",
+    "question": "Why is the lunar south pole targeted for resource utilization in the Artemis program?",
+    "question_type": "factual",
+    "expected_source_doc": "nasa_artemis_mission_overview.docx",
+    "expected_location": "4. Lunar Gateway and South Pole Resource Utilization",
+    "reference_answer": "The lunar south pole has permanently shadowed craters containing water ice in the regolith for drinking water, oxygen, and rocket propellant.",
+    "answerable": true
+  },
+  {
+    "id": "q011",
+    "question": "Explain both the one-time stipend and recurring internet allowance for remote workers, including submission deadlines.",
+    "question_type": "multipart",
+    "expected_source_doc": "acme_global_remote_work_policy.docx",
+    "expected_location": "Section 3: Home Office Equipment Stipend and IT Provisioning",
+    "reference_answer": "Remote employees receive a one-time home office reimbursement of up to $1,200 USD (claims submitted within 60 days) and a recurring monthly broadband allowance of $75 USD paid on the 25th.",
+    "answerable": true
+  },
+  {
+    "id": "q012",
+    "question": "Compare the response time and resolution SLAs between a P1 Critical incident and a P2 Major incident.",
+    "question_type": "multipart",
+    "expected_source_doc": "cloud_infrastructure_incident_playbook.docx",
+    "expected_location": "1. Incident Classification Framework",
+    "reference_answer": "P1 incidents have a first response SLA under 15 minutes and resolution under 2 hours, whereas P2 incidents require response under 30 minutes and resolution under 4 hours.",
+    "answerable": true
+  },
+  {
+    "id": "q013",
+    "question": "What are the three mandatory incident response roles and what are their respective primary responsibilities?",
+    "question_type": "multipart",
+    "expected_source_doc": "cloud_infrastructure_incident_playbook.docx",
+    "expected_location": "2. Incident Response Team Roles",
+    "reference_answer": "The roles are: Incident Commander (decision-making authority and shields engineers), Technical Lead (coordinates investigation and reviews hotfixes), and Communications Lead (status page and stakeholder updates).",
+    "answerable": true
+  },
+  {
+    "id": "q014",
+    "question": "Contrast the objectives and configurations of the Artemis I and Artemis II flight missions.",
+    "question_type": "multipart",
+    "expected_source_doc": "nasa_artemis_mission_overview.docx",
+    "expected_location": "3. Mission Flight Manifest",
+    "reference_answer": "Artemis I was an uncrewed flight test in Distant Retrograde Orbit, whereas Artemis II is the first crewed lunar flyby test carrying four astronauts on a free-return trajectory.",
+    "answerable": true
+  },
+  {
+    "id": "q015",
+    "question": "What are the annual paid sick leave entitlement and the requirement for consecutive absences?",
+    "question_type": "multipart",
+    "expected_source_doc": "acme_global_remote_work_policy.docx",
+    "expected_location": "Section 4: Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+    "reference_answer": "Employees receive 10 paid sick days annually from day one, and absences exceeding 3 consecutive business days require medical certification from a licensed physician.",
+    "answerable": true
+  },
+  {
+    "id": "q016",
+    "question": "What are the mandatory VPN and disk encryption requirements for remote computing devices?",
+    "question_type": "multipart",
+    "expected_source_doc": "acme_global_remote_work_policy.docx",
+    "expected_location": "Section 5: Cybersecurity, VPN, and Data Classification",
+    "reference_answer": "Devices must connect through corporate WireGuard VPN with MFA enabled, and full-disk encryption (BitLocker or FileVault) is mandatory via MDM.",
+    "answerable": true
+  },
+  {
+    "id": "q017",
+    "question": "Describe the SLS propulsion system including both core stage liquid engines and solid rocket boosters.",
+    "question_type": "multipart",
+    "expected_source_doc": "nasa_artemis_mission_overview.docx",
+    "expected_location": "2. Core Launch and Spacecraft Architecture",
+    "reference_answer": "The SLS core stage has four RS-25 engines producing 2.0 million pounds of thrust using liquid hydrogen and liquid oxygen, plus two five-segment solid rocket boosters providing 7.2 million pounds of thrust.",
+    "answerable": true
+  },
+  {
+    "id": "q018",
+    "question": "What is the update frequency requirement for public status page and internal stakeholders during P1 vs P2 incidents?",
+    "question_type": "multipart",
+    "expected_source_doc": "cloud_infrastructure_incident_playbook.docx",
+    "expected_location": "2. Incident Response Team Roles",
+    "reference_answer": "The Communications Lead must provide stakeholder updates every 30 minutes for P1 incidents and every 60 minutes for P2 incidents.",
+    "answerable": true
+  },
+  {
+    "id": "q019",
+    "question": "How much financial reimbursement can a newly hired telecommuting employee claim for desk and chair purchases?",
+    "question_type": "reworded",
+    "expected_source_doc": "acme_global_remote_work_policy.docx",
+    "expected_location": "Section 3: Home Office Equipment Stipend and IT Provisioning",
+    "reference_answer": "Tier A remote employees can claim up to $1,200 USD for their home office setup.",
+    "answerable": true
+  },
+  {
+    "id": "q020",
+    "question": "During which daily UTC hours are staff members expected to be online and reachable on Slack?",
+    "question_type": "reworded",
+    "expected_source_doc": "acme_global_remote_work_policy.docx",
+    "expected_location": "Section 2: Working Hours, Availability, and Time Tracking",
+    "reference_answer": "Employees must maintain core hours between 10:00 UTC and 16:00 UTC.",
+    "answerable": true
+  },
+  {
+    "id": "q021",
+    "question": "What is the resolution deadline for a catastrophic system outage affecting more than 10 percent of our users?",
+    "question_type": "reworded",
+    "expected_source_doc": "cloud_infrastructure_incident_playbook.docx",
+    "expected_location": "1. Incident Classification Framework",
+    "reference_answer": "For a P1 critical outage, the target resolution SLA is under 2 hours.",
+    "answerable": true
+  },
+  {
+    "id": "q022",
+    "question": "Which rocket engines are mounted on the main stage of NASA's heavy lift Moon rocket?",
+    "question_type": "reworded",
+    "expected_source_doc": "nasa_artemis_mission_overview.docx",
+    "expected_location": "2. Core Launch and Spacecraft Architecture",
+    "reference_answer": "The core stage is powered by four Aerojet Rocketdyne RS-25 engines.",
+    "answerable": true
+  },
+  {
+    "id": "q023",
+    "question": "How many days of paid vacation does a full-time staff member earn in total each calendar year?",
+    "question_type": "reworded",
+    "expected_source_doc": "acme_global_remote_work_policy.docx",
+    "expected_location": "Section 4: Annual Leave, Sick Leave, and Paid Time Off (PTO)",
+    "reference_answer": "Full-time permanent employees accrue 25 business days of paid annual vacation leave per year.",
+    "answerable": true
+  },
+  {
+    "id": "q024",
+    "question": "Who supplies the service module that provides propulsion and electrical power for the Orion spacecraft?",
+    "question_type": "reworded",
+    "expected_source_doc": "nasa_artemis_mission_overview.docx",
+    "expected_location": "2. Core Launch and Spacecraft Architecture",
+    "reference_answer": "The European Service Module (ESM) is provided by Airbus on behalf of the European Space Agency.",
+    "answerable": true
+  },
+  {
+    "id": "q025",
+    "question": "How soon must a retrospective incident investigation meeting occur after a critical production outage is fixed?",
+    "question_type": "reworded",
+    "expected_source_doc": "cloud_infrastructure_incident_playbook.docx",
+    "expected_location": "3. Blameless Post-Mortem Policy",
+    "reference_answer": "A blameless post-mortem meeting must take place within 48 business hours of resolution.",
+    "answerable": true
+  },
+  {
+    "id": "q026",
+    "question": "What was the stock price and annual net revenue of Acme Global in 2025?",
+    "question_type": "unanswerable",
+    "expected_source_doc": null,
+    "expected_location": null,
+    "reference_answer": null,
+    "answerable": false
+  },
+  {
+    "id": "q027",
+    "question": "What is the exact base salary and bonus compensation structure for the Acme Chief Executive Officer?",
+    "question_type": "unanswerable",
+    "expected_source_doc": null,
+    "expected_location": null,
+    "reference_answer": null,
+    "answerable": false
+  },
+  {
+    "id": "q028",
+    "question": "What date has NASA scheduled for landing the first human crew on the surface of Mars?",
+    "question_type": "unanswerable",
+    "expected_source_doc": null,
+    "expected_location": null,
+    "reference_answer": null,
+    "answerable": false
+  },
+  {
+    "id": "q029",
+    "question": "Which medical insurance provider does Acme Global contract with for dental benefits in Europe?",
+    "question_type": "unanswerable",
+    "expected_source_doc": null,
+    "expected_location": null,
+    "reference_answer": null,
+    "answerable": false
+  },
+  {
+    "id": "q030",
+    "question": "What are the names of the astronauts assigned to walk on the lunar surface during the Artemis V mission?",
+    "question_type": "unanswerable",
+    "expected_source_doc": null,
+    "expected_location": null,
+    "reference_answer": null,
+    "answerable": false
+  }
+]
