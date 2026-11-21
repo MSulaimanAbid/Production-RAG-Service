@@ -139,6 +139,18 @@ def _status_to_error_code(status: int) -> str:
 # ROUTES
 # ══════════════════════════════════════════════════════════════════════════════
 
+# ── Frontend Single Page Application ──────────────────────────────────────────
+@app.get("/", include_in_schema=False)
+async def serve_frontend() -> Any:
+    """Serve the modern React + Tailwind web application interface."""
+    from fastapi.responses import FileResponse
+    from pathlib import Path
+
+    index_path = Path("frontend") / "index.html"
+    if index_path.exists():
+        return FileResponse(index_path)
+    return JSONResponse({"message": f"Welcome to {settings.app_name} API. Visit /docs for OpenAPI specs."})
+
 # ── Health ─────────────────────────────────────────────────────────────────────
 @app.get(
     "/api/health",

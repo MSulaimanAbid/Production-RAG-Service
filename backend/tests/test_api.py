@@ -157,3 +157,11 @@ async def test_ask_grounded_answer_with_citations_and_chunks(client: AsyncClient
             assert len(data["retrieved_chunks"]) == 1
             assert data["retrieved_chunks"][0]["similarity_score"] == 0.92
             assert data["latency_ms"] >= 0
+
+
+@pytest.mark.asyncio
+async def test_root_serves_frontend(client: AsyncClient):
+    response = await client.get("/")
+    assert response.status_code == 200
+    assert "Production RAG Service" in response.text
+    assert "React" in response.text
