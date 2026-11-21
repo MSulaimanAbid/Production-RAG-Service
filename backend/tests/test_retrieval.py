@@ -24,7 +24,7 @@ async def test_retrieval_with_threshold_and_filter():
     chunk_id = f"{doc_id}-chunk-0"
 
     # Insert a real test chunk with known dummy embedding
-    sample_embedding = [0.05] * 768
+    sample_embedding = [0.05] * 3072  # 3072 dims for gemini-embedding-001
     sample_chunk = Chunk(
         chunk_id=chunk_id,
         doc_id=doc_id,

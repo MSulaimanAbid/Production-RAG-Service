@@ -81,7 +81,7 @@ def test_vector_store_crud():
         page_number=None,
         section_title="Testing",
     )
-    dummy_embedding = [0.1] * 768  # 768 dims
+    dummy_embedding = [0.1] * 3072  # 3072 dims for gemini-embedding-001
 
     # Add chunk
     store.add_chunks(
