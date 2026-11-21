@@ -64,32 +64,51 @@ REASON: <concise one-sentence rationale>
 """
 
 
+def _clean_model_name(model_name: str) -> str:
+    """Strip 'models/' prefix if present."""
+    return model_name.replace("models/", "").strip()
+
+
 @retry(
     stop=stop_after_attempt(3),
     wait=wait_exponential(multiplier=1.5, min=2, max=20),
     reraise=True,
 )
 def _call_judge_sync(prompt: str) -> float:
-    """Invoke Gemini 2.5 Pro as judge and parse score."""
+    """Invoke Gemini judge and parse score."""
     if not settings.google_api_key:
         logger.warning("No GOOGLE_API_KEY set; returning default judge score 1.0 for testing")
         return 1.0
 
     client = genai.Client(api_key=settings.google_api_key)
-    response = client.models.generate_content(
-        model=settings.judge_model,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            temperature=0.0,
-            max_output_tokens=300,
-        ),
-    )
-    text = response.text or ""
-    match = re.search(r"SCORE:\s*([0-1](?:\.\d+)?)", text)
-    if match:
-        score = float(match.group(1))
-        return max(0.0, min(1.0, score))
-    return 0.8  # Fallback if unparseable
+    primary = _clean_model_name(settings.judge_model)
+    fallback_candidates = [primary, "gemini-3.5-flash-lite", "gemini-3.1-flash-lite"]
+    models_to_try = list(dict.fromkeys(fallback_candidates))
+
+    for model_name in models_to_try:
+        try:
+            response = client.models.generate_content(
+                model=model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    temperature=0.0,
+                    max_output_tokens=300,
+                ),
+            )
+            text = response.text or ""
+            match = re.search(r"SCORE:\s*([0-1](?:\.\d+)?)", text)
+            if match:
+                score = float(match.group(1))
+                return max(0.0, min(1.0, score))
+            return 0.8  # Fallback if unparseable
+        except Exception as e:
+            err_str = str(e)
+            if "404" in err_str or "503" in err_str or "NOT_FOUND" in err_str or "UNAVAILABLE" in err_str:
+                logger.warning("Judge model call failed; trying next candidate", model=model_name, error=err_str)
+                continue
+            raise e
+
+    return 0.8
 
 
 async def score_faithfulness(question: str, context: str, answer: str) -> float:

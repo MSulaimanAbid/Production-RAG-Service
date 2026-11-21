@@ -44,15 +44,15 @@ class Settings(BaseSettings):
 
     # LLM models
     llm_model: str = Field(
-        default="gemini-2.5-flash",
+        default="gemini-3.5-flash-lite",
         description="Gemini model for answer generation",
     )
     judge_model: str = Field(
-        default="gemini-2.5-pro",
+        default="gemini-3.5-flash-lite",
         description="Gemini model for LLM-as-a-judge evaluation",
     )
     eval_model: str = Field(
-        default="gemini-2.5-flash-lite",
+        default="gemini-3.5-flash-lite",
         description="Gemini model for bulk evaluation runs",
     )
 

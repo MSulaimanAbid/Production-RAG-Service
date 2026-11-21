@@ -68,29 +68,55 @@ def format_context_prompt(question: str, chunks: list[RetrievedChunk]) -> str:
     )
 
 
+def _clean_model_name(model_name: str) -> str:
+    """Strip 'models/' prefix if present."""
+    return model_name.replace("models/", "").strip()
+
+
 @retry(
     stop=stop_after_attempt(3),
     wait=wait_exponential(multiplier=1.5, min=2, max=20),
     reraise=True,
 )
 def _call_gemini_sync(prompt: str) -> str:
-    """Call Google Gemini 2.5 Flash with retry on transient network errors."""
+    """Call Google Gemini with automatic model fallback on unavailable or retired models."""
     if not settings.google_api_key:
         raise ValueError("GOOGLE_API_KEY is not set in .env. Please provide a valid API key.")
 
     client = genai.Client(api_key=settings.google_api_key)
-    response = client.models.generate_content(
-        model=settings.llm_model,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            system_instruction=SYSTEM_PROMPT,
-            temperature=settings.llm_temperature,
-            max_output_tokens=settings.llm_max_output_tokens,
-        ),
-    )
-    if not response or not response.text:
-        raise RuntimeError("Gemini model returned empty response.")
-    return response.text
+    primary = _clean_model_name(settings.llm_model)
+    fallback_candidates = [primary, "gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-3.5-flash", "gemini-3.8-flash"]
+    models_to_try = list(dict.fromkeys(fallback_candidates))
+
+    last_error: Exception | None = None
+    for model_name in models_to_try:
+        try:
+            response = client.models.generate_content(
+                model=model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    system_instruction=SYSTEM_PROMPT,
+                    temperature=settings.llm_temperature,
+                    max_output_tokens=settings.llm_max_output_tokens,
+                ),
+            )
+            if response and response.text:
+                return response.text
+        except Exception as e:
+            err_str = str(e)
+            if "404" in err_str or "503" in err_str or "NOT_FOUND" in err_str or "UNAVAILABLE" in err_str:
+                logger.warning(
+                    "Model call failed; trying next candidate",
+                    model=model_name,
+                    error=err_str,
+                )
+                last_error = e
+                continue
+            raise e
+
+    if last_error:
+        raise last_error
+    raise RuntimeError("Gemini model returned empty response.")
 
 
 def extract_and_validate_citations(
