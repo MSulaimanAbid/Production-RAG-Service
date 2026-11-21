@@ -7,6 +7,7 @@ Prompt engineered to output deterministic numerical scores (0.0 - 1.0) with just
 from __future__ import annotations
 
 import re
+import time
 from google import genai
 from google.genai import types
 import structlog
@@ -103,6 +104,10 @@ def _call_judge_sync(prompt: str) -> float:
             return 0.8  # Fallback if unparseable
         except Exception as e:
             err_str = str(e)
+            if "429" in err_str or "RESOURCE_EXHAUSTED" in err_str:
+                logger.warning("Judge rate limited (429); pausing 15s...", model=model_name)
+                time.sleep(15)
+                continue
             if "404" in err_str or "503" in err_str or "NOT_FOUND" in err_str or "UNAVAILABLE" in err_str:
                 logger.warning("Judge model call failed; trying next candidate", model=model_name, error=err_str)
                 continue

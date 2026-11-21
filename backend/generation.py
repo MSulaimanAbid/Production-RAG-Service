@@ -12,6 +12,7 @@ Key Responsibilities:
 from __future__ import annotations
 
 import re
+import time
 from typing import Any
 
 from google import genai
@@ -104,6 +105,10 @@ def _call_gemini_sync(prompt: str) -> str:
                 return response.text
         except Exception as e:
             err_str = str(e)
+            if "429" in err_str or "RESOURCE_EXHAUSTED" in err_str:
+                logger.warning("Generation rate limited (429); pausing 15s...", model=model_name)
+                time.sleep(15)
+                continue
             if "404" in err_str or "503" in err_str or "NOT_FOUND" in err_str or "UNAVAILABLE" in err_str:
                 logger.warning(
                     "Model call failed; trying next candidate",

@@ -132,6 +132,7 @@ async def run_evaluation(config_name: str, save_results: bool = True) -> dict[st
             }
             results.append(record)
             print(f" Done ({latency_ms} ms)")
+            await asyncio.sleep(2.0)
 
         except Exception as e:
             print(f" FAILED ({e})")
