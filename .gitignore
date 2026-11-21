@@ -221,3 +221,21 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# RAG service specifics
+chroma_db/
+uploaded_files/
+corpus/*
+!corpus/pdfs/
+!corpus/docx/
+!corpus/**/.gitkeep
+*.pdf
+*.docx
+!Portfolio-01-Production-RAG-Service.pdf
+!corpus/**/*.pdf
+!corpus/**/*.docx
+
+# Eval results
+backend/evals/results/*.json
+!backend/evals/results/.gitkeep
