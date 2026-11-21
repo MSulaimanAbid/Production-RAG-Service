@@ -1,6 +1,6 @@
-import React from 'https://esm.sh/react@18.3.1';
-import htm from 'https://esm.sh/htm@3.1.1';
+import htm from '/static/vendor/htm.module.js';
 
+const React = window.React;
 export const html = htm.bind(React.createElement);
 export default html;
 export { React };
