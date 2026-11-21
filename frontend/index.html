@@ -34,7 +34,7 @@
   <script src="/static/vendor/react-dom.production.min.js"></script>
 
   <!-- Custom Design System Stylesheet -->
-  <link rel="stylesheet" href="/static/css/styles.css" />
+  <link rel="stylesheet" href="/static/css/styles.css?v=1.0.1" />
 
   <!-- Non-blocking Google Fonts (Async loaded, falls back to system fonts instantly) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +63,25 @@
     </div>
   </div>
 
+  <!-- Global Error Handler & Fallback -->
+  <script>
+    window.addEventListener('error', function(e) {
+      console.error('Frontend error caught:', e);
+      var root = document.getElementById('root');
+      if (root && root.querySelector('.animate-bounce')) {
+        root.innerHTML = '<div class="flex h-screen w-screen items-center justify-center bg-[#f8fafc] p-6">' +
+          '<div class="max-w-md w-full bg-white rounded-xl border border-rose-200 p-6 shadow-sm text-center">' +
+          '<div class="w-10 h-10 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center mx-auto mb-3 font-bold text-lg">!</div>' +
+          '<h2 class="text-sm font-semibold text-slate-900 mb-1">Application Startup Notice</h2>' +
+          '<p class="text-xs text-slate-500 mb-4">' + (e.message || 'An error occurred during startup.') + '</p>' +
+          '<button onclick="window.location.reload(true)" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg shadow-sm transition-colors cursor-pointer">' +
+          'Refresh Application' +
+          '</button></div></div>';
+      }
+    });
+  </script>
+
   <!-- Single Production Application Bundle (Zero-waterfall instant load) -->
-  <script type="module" src="/static/app.bundle.js"></script>
+  <script type="module" src="/static/app.bundle.js?v=1.0.1"></script>
 </body>
 </html>

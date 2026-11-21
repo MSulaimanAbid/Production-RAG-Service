@@ -1176,7 +1176,7 @@ function AskAIPage({ documents = [], onNotify, onOpenUpload }) {
             </div>
           `}
 
-          {!answerData && !isAsking && html`
+          ${!answerData && !isAsking && html`
             <div className="bg-white rounded-xl border border-slate-200/90 shadow-xs p-6 space-y-4">
               <h3 className="text-sm font-semibold text-slate-900">Document Question Answering</h3>
               <p className="text-xs text-slate-500">Every claim is grounded in retrieved chunks with validated citations.</p>
