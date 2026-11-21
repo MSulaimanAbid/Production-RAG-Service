@@ -83,6 +83,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ── Static Files ──────────────────────────────────────────────────────────────
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
+_frontend_dir = Path("frontend")
+_frontend_dir.mkdir(exist_ok=True)
+app.mount("/static", StaticFiles(directory=str(_frontend_dir)), name="static")
+
 
 # ── Request ID middleware ──────────────────────────────────────────────────────
 @app.middleware("http")
@@ -206,6 +213,28 @@ async def health_check() -> HealthResponse:
         document_count=doc_count,
         timestamp=datetime.now(timezone.utc),
     )
+
+
+@app.get(
+    "/api/config",
+    summary="Get runtime configuration",
+    description="Return non-sensitive public configuration parameters for the UI.",
+    tags=["System"],
+)
+async def get_config() -> dict[str, Any]:
+    """Return public application configuration for the settings and overview panels."""
+    return {
+        "app_name": settings.app_name,
+        "app_version": settings.app_version,
+        "llm_model": settings.llm_model,
+        "embedding_model": settings.active_embedding_model,
+        "chunk_size": settings.active_chunk_size,
+        "chunk_overlap": settings.active_chunk_overlap,
+        "similarity_threshold": settings.similarity_threshold,
+        "retrieval_top_k": settings.retrieval_top_k,
+        "max_file_size_mb": settings.max_file_size_mb,
+        "allowed_extensions": settings.allowed_extensions,
+    }
 
 
 # ── Documents ──────────────────────────────────────────────────────────────────

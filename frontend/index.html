@@ -3,590 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Production RAG Service — AI Document Intelligence</title>
+  <title>DocuMind — AI Document Intelligence Platform</title>
+  <meta name="description" content="Production RAG Service — AI Document Intelligence Platform built with React & Tailwind." />
+  <meta name="application-name" content="Production RAG Service" />
+  
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2.5'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'/%3E%3Cpath d='M2 17l10 5 10-5'/%3E%3Cpath d='M2 12l10 5 10-5'/%3E%3C/svg%3E" />
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- React 18 & ReactDOM -->
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <!-- Babel Standalone for JSX -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-    body { font-family: 'Inter', sans-serif; }
-    code, pre { font-family: 'JetBrains Mono', monospace; }
-  </style>
-</head>
-<body class="bg-slate-950 text-slate-100 min-h-screen">
-  <div id="root"></div>
-
-  <script type="text/babel">
-    const { useState, useEffect, useRef } = React;
-
-    const API_BASE = window.location.origin.includes(":8000") 
-      ? window.location.origin 
-      : "http://127.0.0.1:8000";
-
-    function App() {
-      const [documents, setDocuments] = useState([]);
-      const [loadingDocs, setLoadingDocs] = useState(false);
-      const [uploading, setUploading] = useState(false);
-      const [uploadProgress, setUploadProgress] = useState("");
-      
-      const [question, setQuestion] = useState("");
-      const [topK, setTopK] = useState(5);
-      const [threshold, setThreshold] = useState(0.35);
-      const [selectedDocId, setSelectedDocId] = useState("");
-      
-      const [asking, setAsking] = useState(false);
-      const [answerData, setAnswerData] = useState(null);
-      const [errorMsg, setErrorMsg] = useState(null);
-      const [activeTab, setActiveTab] = useState("ask"); // "ask" or "docs"
-
-      // Fetch documents on mount
-      useEffect(() => {
-        fetchDocuments();
-      }, []);
-
-      const fetchDocuments = async () => {
-        setLoadingDocs(true);
-        try {
-          const res = await fetch(`${API_BASE}/api/documents`);
-          if (!res.ok) throw new Error(`HTTP ${res.status}: Failed to fetch documents`);
-          const data = await res.json();
-          setDocuments(data.documents || []);
-        } catch (err) {
-          console.error(err);
-        } finally {
-          setLoadingDocs(false);
-        }
-      };
-
-      async function parseApiResponse(res) {
-        const contentType = res.headers.get("content-type") || "";
-        if (contentType.includes("application/json")) {
-          try {
-            return await res.json();
-          } catch (e) {
-            return { detail: `Failed to parse server JSON response: ${e.message}` };
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+          },
+          boxShadow: {
+            '2xs': '0 1px 2px 0 rgba(0, 0, 0, 0.03)',
+            'xs': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05)',
           }
         }
-        const text = await res.text();
-        return { detail: text || `Server error (HTTP ${res.status})` };
       }
-
-      const handleFileUpload = async (e) => {
-        const file = e.target.files?.[0];
-        if (!file) return;
-
-        setUploading(true);
-        setErrorMsg(null);
-        setUploadProgress(`Processing and embedding ${file.name}...`);
-
-        const formData = new FormData();
-        formData.append("file", file);
-
-        try {
-          const res = await fetch(`${API_BASE}/api/documents`, {
-            method: "POST",
-            body: formData,
-          });
-
-          const data = await parseApiResponse(res);
-
-          if (!res.ok) {
-            let msg = data.detail || `Upload failed with status ${res.status}`;
-            if (res.status === 409) msg = `Duplicate Document (409): ${msg}`;
-            if (res.status === 415) msg = `Unsupported Media Type (415): ${msg}`;
-            if (res.status === 400) msg = `Bad Request (400): ${msg}`;
-            if (res.status === 500) msg = `Server Error (500): ${msg}`;
-            throw new Error(msg);
-          }
-
-          setUploadProgress(`Success! ${file.name} ingested (${data.chunk_count} chunks).`);
-          fetchDocuments();
-          setTimeout(() => setUploadProgress(""), 4000);
-        } catch (err) {
-          setErrorMsg(err.message);
-          setUploadProgress("");
-        } finally {
-          setUploading(false);
-          e.target.value = "";
-        }
-      };
-
-      const handleDeleteDocument = async (docId, filename) => {
-        if (!confirm(`Delete "${filename}" and purge all its vectors from the database?`)) return;
-
-        try {
-          const res = await fetch(`${API_BASE}/api/documents/${docId}`, {
-            method: "DELETE",
-          });
-
-          if (!res.ok && res.status !== 204) {
-            throw new Error(`Failed to delete document: HTTP ${res.status}`);
-          }
-
-          // If answer had citations from this doc, clear them
-          if (answerData && answerData.citations.some(c => c.doc_id === docId)) {
-            setAnswerData(null);
-          }
-
-          fetchDocuments();
-        } catch (err) {
-          setErrorMsg(err.message);
-        }
-      };
-
-      const handleAskQuestion = async (e) => {
-        e?.preventDefault();
-        const cleanQ = question.trim();
-        if (!cleanQ) return;
-
-        setAsking(true);
-        setErrorMsg(null);
-        setAnswerData(null);
-
-        const payload = {
-          question: cleanQ,
-          top_k: parseInt(topK),
-          similarity_threshold: parseFloat(threshold),
-          doc_ids: selectedDocId ? [selectedDocId] : null,
-        };
-
-        try {
-          const res = await fetch(`${API_BASE}/api/ask`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          });
-
-          const data = await parseApiResponse(res);
-
-          if (!res.ok) {
-            throw new Error(data.detail || `Question query failed (HTTP ${res.status})`);
-          }
-
-          setAnswerData(data);
-        } catch (err) {
-          setErrorMsg(err.message);
-        } finally {
-          setAsking(false);
-        }
-      };
-
-      return (
-        <div className="flex flex-col min-h-screen">
-          {/* Top Navbar */}
-          <header className="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/20">
-                RAG
-              </div>
-              <div>
-                <h1 className="font-semibold text-lg text-slate-100 flex items-center gap-2">
-                  Production RAG Service
-                  <span className="text-xs bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 px-2 py-0.5 rounded-full font-mono">
-                    Gemini 2.5 Flash
-                  </span>
-                </h1>
-                <p className="text-xs text-slate-400">Grounding · Citations · ChromaDB · Guardrails</p>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-3">
-              <div className="flex bg-slate-800 rounded-lg p-1 border border-slate-700 text-xs font-medium">
-                <button
-                  onClick={() => setActiveTab("ask")}
-                  className={`px-3 py-1.5 rounded-md transition ${activeTab === 'ask' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-slate-200'}`}
-                >
-                  Question Answering
-                </button>
-                <button
-                  onClick={() => setActiveTab("docs")}
-                  className={`px-3 py-1.5 rounded-md transition flex items-center gap-1.5 ${activeTab === 'docs' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-slate-200'}`}
-                >
-                  Documents
-                  <span className="bg-slate-700 text-slate-300 px-1.5 py-0.2 rounded-full text-[10px]">
-                    {documents.length}
-                  </span>
-                </button>
-              </div>
-
-              <a
-                href={`${API_BASE}/docs`}
-                target="_blank"
-                rel="noreferrer"
-                className="text-xs text-slate-400 hover:text-indigo-400 border border-slate-700 hover:border-indigo-500/40 px-3 py-1.5 rounded-lg transition"
-              >
-                Swagger API Docs ↗
-              </a>
-            </div>
-          </header>
-
-          {/* Error Banner */}
-          {errorMsg && (
-            <div className="bg-rose-950/80 border-b border-rose-800/80 text-rose-200 px-6 py-3 flex items-center justify-between text-sm">
-              <div className="flex items-center space-x-2">
-                <span className="font-semibold text-rose-400">Error:</span>
-                <span>{errorMsg}</span>
-              </div>
-              <button onClick={() => setErrorMsg(null)} className="text-rose-400 hover:text-rose-200 text-xs font-bold">
-                ✕ Dismiss
-              </button>
-            </div>
-          )}
-
-          {/* Upload Success Banner */}
-          {uploadProgress && (
-            <div className="bg-emerald-950/80 border-b border-emerald-800/80 text-emerald-200 px-6 py-2.5 flex items-center justify-between text-xs">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-                <span>{uploadProgress}</span>
-              </div>
-            </div>
-          )}
-
-          {/* Main Body */}
-          <main className="flex-1 max-w-7xl w-full mx-auto p-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
-            {/* Left Column: Ask or Document Management */}
-            <div className="lg:col-span-8 flex flex-col space-y-6">
-
-              {activeTab === "ask" ? (
-                <>
-                  {/* Question Box Card */}
-                  <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
-                    <form onSubmit={handleAskQuestion} className="space-y-4">
-                      <div className="flex justify-between items-center">
-                        <label className="text-sm font-medium text-slate-300 flex items-center gap-2">
-                          Ask a question over your corpus
-                        </label>
-                        <span className="text-xs text-slate-500">
-                          {documents.length} document{documents.length !== 1 ? 's' : ''} available
-                        </span>
-                      </div>
-
-                      <div className="relative">
-                        <textarea
-                          rows={3}
-                          value={question}
-                          onChange={(e) => setQuestion(e.target.value)}
-                          placeholder="e.g. What is the remote equipment allowance, or what engines power the SLS core stage?"
-                          className="w-full bg-slate-950 border border-slate-700/80 rounded-xl p-4 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 resize-none transition"
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter' && !e.shiftKey) {
-                              e.preventDefault();
-                              handleAskQuestion();
-                            }
-                          }}
-                        />
-                      </div>
-
-                      {/* Controls Bar: Top-K & Threshold & Scope */}
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 border-t border-slate-800/80 text-xs text-slate-400">
-                        <div>
-                          <div className="flex justify-between mb-1">
-                            <span>Top-K Chunks:</span>
-                            <span className="font-mono text-indigo-400 font-bold">{topK}</span>
-                          </div>
-                          <input
-                            type="range"
-                            min="1"
-                            max="10"
-                            value={topK}
-                            onChange={(e) => setTopK(e.target.value)}
-                            className="w-full accent-indigo-500 cursor-pointer"
-                          />
-                        </div>
-
-                        <div>
-                          <div className="flex justify-between mb-1">
-                            <span>Min Similarity:</span>
-                            <span className="font-mono text-indigo-400 font-bold">{threshold}</span>
-                          </div>
-                          <input
-                            type="range"
-                            min="0.10"
-                            max="0.80"
-                            step="0.05"
-                            value={threshold}
-                            onChange={(e) => setThreshold(e.target.value)}
-                            className="w-full accent-indigo-500 cursor-pointer"
-                          />
-                        </div>
-
-                        <div>
-                          <div className="flex justify-between mb-1">
-                            <span>Document Scope:</span>
-                          </div>
-                          <select
-                            value={selectedDocId}
-                            onChange={(e) => setSelectedDocId(e.target.value)}
-                            className="w-full bg-slate-950 border border-slate-800 rounded px-2 py-1 text-slate-200 focus:outline-none text-xs"
-                          >
-                            <option value="">All Documents</option>
-                            {documents.map((d) => (
-                              <option key={d.doc_id} value={d.doc_id}>
-                                {d.filename}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      </div>
-
-                      <div className="flex justify-between items-center pt-2">
-                        <div className="text-[11px] text-slate-500">
-                          Press <kbd className="px-1.5 py-0.5 bg-slate-800 border border-slate-700 rounded text-slate-400">Enter</kbd> to submit
-                        </div>
-
-                        <button
-                          type="submit"
-                          disabled={asking || !question.trim()}
-                          className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white font-medium text-sm flex items-center space-x-2 transition disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-indigo-600/20"
-                        >
-                          {asking ? (
-                            <>
-                              <svg className="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                              </svg>
-                              <span>Thinking...</span>
-                            </>
-                          ) : (
-                            <>
-                              <span>Ask Question</span>
-                              <span>→</span>
-                            </>
-                          )}
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-
-                  {/* Answer Section */}
-                  {answerData && (
-                    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-5 animate-fade-in">
-                      <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm font-semibold text-slate-200">Grounded Answer</span>
-                          {answerData.answerable ? (
-                            <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[11px] px-2 py-0.5 rounded-full font-medium">
-                              Grounded in Context
-                            </span>
-                          ) : (
-                            <span className="bg-amber-500/20 text-amber-400 border border-amber-500/30 text-[11px] px-2 py-0.5 rounded-full font-medium">
-                              Refusal (No Match)
-                            </span>
-                          )}
-                        </div>
-                        <span className="text-xs text-slate-500 font-mono">
-                          Latency: {answerData.latency_ms} ms
-                        </span>
-                      </div>
-
-                      {/* Answer Text */}
-                      <div className="text-slate-200 leading-relaxed text-sm whitespace-pre-wrap bg-slate-950/60 p-4 rounded-xl border border-slate-800/80">
-                        {answerData.answer}
-                      </div>
-
-                      {/* Source Citations */}
-                      {answerData.citations && answerData.citations.length > 0 && (
-                        <div className="space-y-2">
-                          <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                            Verified Source Citations ({answerData.citations.length}):
-                          </h4>
-                          <div className="grid grid-cols-1 gap-2">
-                            {answerData.citations.map((c, i) => (
-                              <div
-                                key={i}
-                                className="bg-indigo-950/30 border border-indigo-900/40 rounded-xl p-3 text-xs text-slate-300"
-                              >
-                                <div className="flex items-center justify-between font-medium text-indigo-400 mb-1">
-                                  <span>📄 {c.filename}</span>
-                                  <span className="bg-indigo-900/40 px-2 py-0.5 rounded text-[10px] text-indigo-300 font-mono">
-                                    {c.page ? `Page ${c.page}` : c.section || 'General'}
-                                  </span>
-                                </div>
-                                <p className="text-slate-400 italic font-serif">"{c.excerpt}"</p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </>
-              ) : (
-                /* Document Management Tab */
-                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
-                  <div className="flex justify-between items-center border-b border-slate-800 pb-4">
-                    <div>
-                      <h2 className="text-base font-semibold text-slate-100">Document Repository</h2>
-                      <p className="text-xs text-slate-400">Uploaded files are chunked, embedded, and stored in ChromaDB.</p>
-                    </div>
-                    <label className="cursor-pointer px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium rounded-xl transition flex items-center gap-1.5 shadow">
-                      <span>+ Upload Document</span>
-                      <input
-                        type="file"
-                        accept=".pdf,.docx"
-                        onChange={handleFileUpload}
-                        disabled={uploading}
-                        className="hidden"
-                      />
-                    </label>
-                  </div>
-
-                  {loadingDocs ? (
-                    <div className="py-12 text-center text-slate-500 text-sm">Loading documents...</div>
-                  ) : documents.length === 0 ? (
-                    <div className="py-12 text-center text-slate-500 text-sm border-2 border-dashed border-slate-800 rounded-xl">
-                      No documents ingested yet. Upload a PDF or DOCX file to begin.
-                    </div>
-                  ) : (
-                    <div className="overflow-x-auto">
-                      <table className="w-full text-left text-xs text-slate-300">
-                        <thead className="bg-slate-950/70 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-800">
-                          <tr>
-                            <th className="py-3 px-4">Filename</th>
-                            <th className="py-3 px-4">Type</th>
-                            <th className="py-3 px-4">Chunks</th>
-                            <th className="py-3 px-4">Pages</th>
-                            <th className="py-3 px-4">Ingested Date</th>
-                            <th className="py-3 px-4 text-right">Action</th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-slate-800/60">
-                          {documents.map((doc) => (
-                            <tr key={doc.doc_id} className="hover:bg-slate-800/30 transition">
-                              <td className="py-3 px-4 font-medium text-slate-100 flex items-center gap-2">
-                                <span>{doc.file_type === 'pdf' ? '📕' : '📘'}</span>
-                                <span className="truncate max-w-xs">{doc.filename}</span>
-                              </td>
-                              <td className="py-3 px-4 uppercase text-[10px] font-mono text-slate-400">{doc.file_type}</td>
-                              <td className="py-3 px-4 font-mono text-indigo-400 font-semibold">{doc.chunk_count}</td>
-                              <td className="py-3 px-4 text-slate-400">{doc.page_count || '—'}</td>
-                              <td className="py-3 px-4 text-slate-400">{new Date(doc.created_at).toLocaleDateString()}</td>
-                              <td className="py-3 px-4 text-right">
-                                <button
-                                  onClick={() => handleDeleteDocument(doc.doc_id, doc.filename)}
-                                  className="text-rose-400 hover:text-rose-300 hover:bg-rose-950/50 px-2 py-1 rounded transition text-xs"
-                                >
-                                  Delete
-                                </button>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  )}
-                </div>
-              )}
-
-            </div>
-
-            {/* Right Column: Upload Box & Retrieved Chunks Section */}
-            <div className="lg:col-span-4 flex flex-col space-y-6">
-
-              {/* Upload Drop Zone Card */}
-              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
-                <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-3">
-                  Upload Documents (.PDF, .DOCX)
-                </h3>
-                
-                <label className="border-2 border-dashed border-slate-700/80 hover:border-indigo-500/60 rounded-xl p-6 flex flex-col items-center justify-center cursor-pointer transition bg-slate-950/40 hover:bg-slate-900 group">
-                  <div className="w-10 h-10 rounded-full bg-slate-800 group-hover:bg-indigo-600/20 text-indigo-400 flex items-center justify-center mb-2 transition">
-                    ↑
-                  </div>
-                  <span className="text-xs font-medium text-slate-200">Click or drop file to ingest</span>
-                  <span className="text-[11px] text-slate-500 mt-1">PDF or DOCX up to 50MB</span>
-                  <input
-                    type="file"
-                    accept=".pdf,.docx"
-                    onChange={handleFileUpload}
-                    disabled={uploading}
-                    className="hidden"
-                  />
-                </label>
-              </div>
-
-              {/* Retrieved Chunks Display (Required by PDF Section 2) */}
-              <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex-1 flex flex-col">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
-                  <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-2">
-                    Retrieved Chunks
-                    {answerData && (
-                      <span className="bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-[10px] px-1.5 py-0.2 rounded-full font-mono">
-                        {answerData.chunk_count} fetched
-                      </span>
-                    )}
-                  </h3>
-                </div>
-
-                {!answerData ? (
-                  <div className="flex-1 flex flex-col items-center justify-center text-center p-6 text-slate-500 text-xs">
-                    <span>Ask a question to see the retrieved chunks and their similarity scores.</span>
-                  </div>
-                ) : answerData.retrieved_chunks.length === 0 ? (
-                  <div className="text-slate-500 text-xs text-center py-8">
-                    No chunks met the similarity threshold ({threshold}).
-                  </div>
-                ) : (
-                  <div className="space-y-3 overflow-y-auto max-h-[550px] pr-1">
-                    {answerData.retrieved_chunks.map((chunk, idx) => (
-                      <div
-                        key={idx}
-                        className="bg-slate-950/80 border border-slate-800 rounded-xl p-3 text-xs space-y-2 hover:border-slate-700 transition"
-                      >
-                        {/* Header: File & Score */}
-                        <div className="flex items-center justify-between text-[11px]">
-                          <span className="font-medium text-slate-200 truncate max-w-[160px]" title={chunk.filename}>
-                            📄 {chunk.filename}
-                          </span>
-                          <span className="font-mono font-semibold text-cyan-400 bg-cyan-950/50 border border-cyan-800/50 px-1.5 py-0.5 rounded text-[10px]">
-                            Score: {(chunk.similarity_score * 100).toFixed(1)}%
-                          </span>
-                        </div>
-
-                        {/* Location */}
-                        <div className="text-[10px] text-slate-500">
-                          {chunk.page ? `Page ${chunk.page}` : chunk.section ? `Section: ${chunk.section}` : `Chunk #${chunk.chunk_index}`}
-                        </div>
-
-                        {/* Progress Bar for Score */}
-                        <div className="w-full bg-slate-800 h-1 rounded-full overflow-hidden">
-                          <div
-                            className="bg-gradient-to-r from-cyan-500 to-indigo-500 h-full rounded-full"
-                            style={{ width: `${Math.min(100, Math.max(0, chunk.similarity_score * 100))}%` }}
-                          />
-                        </div>
-
-                        {/* Chunk Excerpt */}
-                        <p className="text-slate-400 leading-normal font-mono text-[11px] bg-slate-900/50 p-2 rounded border border-slate-800/50 line-clamp-4 hover:line-clamp-none transition-all">
-                          {chunk.text}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-            </div>
-
-          </main>
-
-          {/* Footer */}
-          <footer className="border-t border-slate-800/80 bg-slate-950 py-4 px-6 text-center text-xs text-slate-500">
-            Portfolio 01 · Production RAG Service · Agentic AI · Instructor: Osama Izhar
-          </footer>
-        </div>
-      );
     }
+  </script>
 
-    ReactDOM.render(<App />, document.getElementById("root"));
+  <!-- Custom Design System Stylesheet -->
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body class="bg-[#f8fafc] text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-900 overflow-hidden">
+  <!-- Root Container -->
+  <div id="root">
+    <!-- Initial Loading State -->
+    <div class="flex h-screen w-screen items-center justify-center bg-[#f8fafc]">
+      <div class="flex flex-col items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-sm animate-pulse">
+          <svg class="w-5 h-5 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce"></div>
+          <div class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce [animation-delay:-0.15s]"></div>
+          <div class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce [animation-delay:-0.3s]"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Native ES Module Application Bootstrap -->
+  <script type="module">
+    import { React } from '/static/src/utils/html.js';
+    import ReactDOM from 'https://esm.sh/react-dom@18.3.1/client';
+    import { App } from '/static/src/app.js';
+
+    const rootElement = document.getElementById('root');
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(React.createElement(App));
   </script>
 </body>
 </html>
