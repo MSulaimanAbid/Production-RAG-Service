@@ -58,15 +58,15 @@ class Settings(BaseSettings):
 
     # Embedding models
     embedding_model_a: str = Field(
-        default="models/gemini-embedding-exp-03-07",
-        description="Primary embedding model (Config A — highest quality)",
+        default="gemini-embedding-001",
+        description="Primary embedding model (Config A — highest quality, 3072 dims)",
     )
     embedding_model_b: str = Field(
-        default="models/text-embedding-004",
+        default="gemini-embedding-2",
         description="Secondary embedding model (Config B — comparison)",
     )
     active_embedding_model: str = Field(
-        default="models/gemini-embedding-exp-03-07",
+        default="gemini-embedding-001",
         description="Currently active embedding model",
     )
 

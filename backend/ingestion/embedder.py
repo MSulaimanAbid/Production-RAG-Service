@@ -1,9 +1,9 @@
 """
-Embedding generation using Google Generative AI with batching and retries.
+Embedding generation using Google GenAI SDK with batching and retries.
 
 Supports:
-  - Config A: models/gemini-embedding-exp-03-07 (highest quality, 3072 dims)
-  - Config B: models/text-embedding-004 (768 dims, production stable)
+  - Config A: gemini-embedding-001 (highest quality, 3072 dims)
+  - Config B: gemini-embedding-2 (3072 dims)
 
 Never logs API keys. Batches requests and handles transient rate-limiting.
 """
@@ -12,25 +12,15 @@ from __future__ import annotations
 import asyncio
 from typing import Literal
 
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 import structlog
-from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
+from tenacity import retry, stop_after_attempt, wait_exponential
 
 from backend.config import get_settings
 
 logger = structlog.get_logger(__name__)
 settings = get_settings()
-
-# Initialize Google GenAI client if key is provided
-_INITIALIZED = False
-
-
-def _ensure_genai_configured() -> None:
-    """Configure genai SDK once."""
-    global _INITIALIZED
-    if not _INITIALIZED and settings.google_api_key:
-        genai.configure(api_key=settings.google_api_key)
-        _INITIALIZED = True
 
 
 @retry(
@@ -44,27 +34,27 @@ def _embed_batch_sync(
     task_type: Literal["retrieval_document", "retrieval_query"] = "retrieval_document",
 ) -> list[list[float]]:
     """Synchronous single-batch embedding call wrapped with retry."""
-    _ensure_genai_configured()
-
     if not settings.google_api_key:
         raise ValueError(
             "GOOGLE_API_KEY is not configured in .env. Please set a valid key from Google AI Studio."
         )
 
+    # Clean potential 'models/' prefix for modern genai SDK
+    clean_model = model.replace("models/", "")
+    client = genai.Client(api_key=settings.google_api_key)
+
     try:
-        response = genai.embed_content(
-            model=model,
-            content=texts,
-            task_type=task_type,
+        response = client.models.embed_content(
+            model=clean_model,
+            contents=texts,
         )
-        embeddings = response.get("embedding", [])
-        if not embeddings:
-            raise RuntimeError(f"Embedding API returned empty embedding for model '{model}'")
-        return embeddings
+        if not response or not response.embeddings:
+            raise RuntimeError(f"Embedding API returned empty embedding for model '{clean_model}'")
+        return [e.values for e in response.embeddings]
     except Exception as e:
         logger.warning(
             "Embedding API call failed; will retry if attempts remain",
-            model=model,
+            model=clean_model,
             error=str(e),
             batch_count=len(texts),
         )
@@ -104,7 +94,6 @@ async def embed_texts(
 
     for i in range(0, len(texts), batch_size):
         batch = texts[i:i + batch_size]
-        # Run blocking GenAI call in default thread pool
         batch_vectors = await asyncio.to_thread(
             _embed_batch_sync,
             texts=batch,
