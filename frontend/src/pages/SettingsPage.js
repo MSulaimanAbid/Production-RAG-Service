@@ -2,6 +2,18 @@ import { html } from '../utils/html.js';
 import { Badge } from '../components/ui/Badge.js';
 import { Button } from '../components/ui/Button.js';
 
+/**
+ * SettingsPage Component.
+ * Read-only diagnostic panel showing active AI runtime settings:
+ * LLM model, embedding model, vector database collection parameters,
+ * chunking strategy (sizes and overlaps), and live component health metrics.
+ *
+ * @param {Object} props
+ * @param {Object|null} props.config - Public system configuration parameters.
+ * @param {Object|null} props.health - Live system health telemetry object.
+ * @param {() => void} props.onRefreshHealth - Handler to refresh component health.
+ * @param {boolean} [props.loading] - Whether health check is currently pending.
+ */
 export function SettingsPage({
   config = null,
   health = null,

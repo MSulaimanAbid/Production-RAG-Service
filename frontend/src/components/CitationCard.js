@@ -1,6 +1,16 @@
 import { html } from '../utils/html.js';
 import { Badge } from './ui/Badge.js';
 
+/**
+ * CitationCard Component.
+ * Displays an individual grounded citation reference with filename,
+ * page/section badge, snippet text, and selection state.
+ *
+ * @param {Object} props
+ * @param {Object} props.citation - Citation metadata object.
+ * @param {(chunkId: string) => void} [props.onSelectChunk] - Callback when user clicks the citation card.
+ * @param {boolean} [props.isSelected] - Whether this citation is currently highlighted.
+ */
 export function CitationCard({ citation, onSelectChunk, isSelected = false }) {
   const locText = citation.page !== null && citation.page !== undefined
     ? `Page ${citation.page}`

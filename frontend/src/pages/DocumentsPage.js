@@ -4,6 +4,19 @@ import { DocumentTable } from '../components/DocumentTable.js';
 import { DocumentUploadModal } from '../components/DocumentUploadModal.js';
 import { DocumentDetailModal } from '../components/DocumentDetailModal.js';
 
+/**
+ * DocumentsPage Component.
+ * Dedicated knowledge base management view housing the searchable DocumentTable,
+ * upload triggers, and document inspector dialogs.
+ *
+ * @param {Object} props
+ * @param {Array<Object>} props.documents - List of documents in the knowledge base.
+ * @param {boolean} [props.loading] - Whether document fetch is currently active.
+ * @param {() => void} props.onRefresh - Refresh documents handler.
+ * @param {(toast: Object) => void} [props.onNotify] - Global notification toast trigger.
+ * @param {boolean} props.isUploadOpen - Controlled state for the upload modal.
+ * @param {(open: boolean) => void} props.setIsUploadOpen - State updater for upload modal.
+ */
 export function DocumentsPage({
   documents = [],
   loading = false,

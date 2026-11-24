@@ -2,6 +2,15 @@ import { html } from '../utils/html.js';
 
 const CITATION_REGEX = /\[Source:\s*([^,\]]+)(?:,\s*(?:page\s*(\d+)|section\s*['"]?([^'"]+)['"]?))?\]/gi;
 
+/**
+ * MarkdownRenderer Component.
+ * Parses generated LLM responses, formatting paragraphs, bullet lists, bold text,
+ * and turning inline citation tags `[Source: file, page N]` into clickable interactive pills.
+ *
+ * @param {Object} props
+ * @param {string} props.content - Generated LLM response text.
+ * @param {(citation: Object) => void} [props.onCitationClick] - Callback when an inline citation tag is clicked.
+ */
 export function MarkdownRenderer({ content = '', onCitationClick }) {
   if (!content) return null;
 

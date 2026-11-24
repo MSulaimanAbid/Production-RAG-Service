@@ -1,11 +1,28 @@
 import { html } from '../utils/html.js';
 
+/**
+ * Persistent Navigation Sidebar Component.
+ * Displays brand monogram, active navigation tabs with dynamic badges,
+ * real-time system health indicator, API documentation links,
+ * and user profile info with sign-out action.
+ *
+ * @param {Object} props
+ * @param {string} props.activeTab - Currently active navigation tab identifier.
+ * @param {(tab: string) => void} props.onSelectTab - Callback invoked on tab change.
+ * @param {Object|null} props.health - Backend health status object.
+ * @param {boolean} props.isMobileOpen - Whether mobile responsive drawer is open.
+ * @param {() => void} props.onCloseMobile - Mobile drawer close handler.
+ * @param {Object|null} [props.currentUser] - Currently authenticated user profile.
+ * @param {() => void} [props.onLogout] - Sign-out handler.
+ */
 export function Sidebar({
   activeTab,
   onSelectTab,
   health,
   isMobileOpen,
   onCloseMobile,
+  currentUser = null,
+  onLogout,
 }) {
   const navItems = [
     {
@@ -177,6 +194,33 @@ export function Sidebar({
             </svg>
           </a>
         </div>
+
+        ${currentUser && html`
+          <!-- User Profile & Sign Out -->
+          <div className="pt-2 border-t border-slate-200/70 flex items-center justify-between">
+            <div className="flex items-center gap-2 min-w-0">
+              <div className="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-[10px] shrink-0 ring-1 ring-slate-200 uppercase">
+                ${(currentUser.name || currentUser.email || 'U').substring(0, 2)}
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs font-semibold text-slate-900 truncate">${currentUser.name || 'User'}</p>
+                <p className="text-[10px] text-slate-400 font-mono truncate" title=${currentUser.email}>${currentUser.email}</p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick=${onLogout}
+              title="Sign Out"
+              className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-subtle cursor-pointer shrink-0"
+            >
+              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+        `}
       </div>
     </aside>
   `;

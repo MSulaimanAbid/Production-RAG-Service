@@ -4,6 +4,18 @@ import { Button } from './ui/Button.js';
 import { Badge } from './ui/Badge.js';
 import { api } from '../services/api.js';
 
+/**
+ * DocumentUploadModal Component.
+ * Drag-and-drop file uploader supporting PDF and DOCX files up to 50MB.
+ * Communicates with `POST /api/documents` and displays multi-stage ingestion progress.
+ *
+ * @param {Object} props
+ * @param {boolean} props.isOpen - Whether modal is visible.
+ * @param {() => void} props.onClose - Modal close handler.
+ * @param {(doc: Object) => void} props.onUploadSuccess - Callback invoked when file ingestion completes.
+ * @param {(toast: Object) => void} [props.onNotify] - Callback to trigger notification toasts.
+ * @param {number} [props.maxSizeMb=50] - Maximum allowed upload size in megabytes.
+ */
 export function DocumentUploadModal({
   isOpen,
   onClose,

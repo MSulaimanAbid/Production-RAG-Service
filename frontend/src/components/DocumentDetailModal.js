@@ -3,6 +3,17 @@ import { Modal } from './ui/Modal.js';
 import { Button } from './ui/Button.js';
 import { Badge } from './ui/Badge.js';
 
+/**
+ * DocumentDetailModal Component.
+ * Inspector dialog displaying full metadata of an indexed document:
+ * Document ID, SHA-256 hash, chunk distribution, file size, ingestion time, and deletion trigger.
+ *
+ * @param {Object} props
+ * @param {boolean} props.isOpen - Whether modal is visible.
+ * @param {() => void} props.onClose - Modal close handler.
+ * @param {Object|null} props.document - Selected document metadata object.
+ * @param {(doc: Object) => void} [props.onDeleteRequest] - Callback to delete the document.
+ */
 export function DocumentDetailModal({
   isOpen,
   onClose,

@@ -226,6 +226,8 @@ __marimo__/
 # RAG service specifics
 chroma_db/
 uploaded_files/
+data/
+*.db
 corpus/*
 !corpus/pdfs/
 !corpus/docx/

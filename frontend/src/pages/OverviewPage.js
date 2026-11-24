@@ -3,6 +3,20 @@ import { Button } from '../components/ui/Button.js';
 import { Badge } from '../components/ui/Badge.js';
 import { CardSkeleton } from '../components/ui/Skeleton.js';
 
+/**
+ * OverviewPage Component.
+ * Executive dashboard displaying system metrics: total documents indexed,
+ * chunk counts, vector storage status, system health telemetry, and recent document activity.
+ *
+ * @param {Object} props
+ * @param {Array<Object>} props.documents - List of documents in the knowledge base.
+ * @param {Object|null} props.health - Backend health telemetry payload.
+ * @param {Object|null} props.config - Public runtime configuration parameters.
+ * @param {boolean} [props.loading] - Whether data is actively loading.
+ * @param {(tab: string) => void} props.onNavigate - Callback to switch active navigation tab.
+ * @param {() => void} props.onOpenUpload - Action to launch document uploader.
+ * @param {(doc: Object) => void} props.onViewDoc - Action to view document details.
+ */
 export function OverviewPage({
   documents = [],
   health = null,

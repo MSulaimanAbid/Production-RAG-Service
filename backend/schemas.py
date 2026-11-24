@@ -244,3 +244,53 @@ class ErrorResponse(BaseModel):
             }
         }
     }
+
+
+# ── Auth endpoints ─────────────────────────────────────────────────────────────
+
+class UserLoginRequest(BaseModel):
+    """User credentials for authentication."""
+    email: str = Field(..., description="User email address")
+    password: str = Field(..., min_length=1, description="User password")
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "email": "admin@documind.ai",
+                "password": "admin123"
+            }
+        }
+    }
+
+
+class UserRegisterRequest(BaseModel):
+    """Registration request for creating a new user account."""
+    email: str = Field(..., description="User email address")
+    password: str = Field(..., min_length=6, description="User password (minimum 6 characters)")
+    name: str = Field(..., min_length=2, description="User display name")
+
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "email": "user@example.com",
+                "password": "securepassword",
+                "name": "Alex Johnson"
+            }
+        }
+    }
+
+
+class UserResponse(BaseModel):
+    """Public user identity information."""
+    id: str = Field(..., description="Unique user identifier")
+    email: str = Field(..., description="User email address")
+    name: str = Field(..., description="User display name")
+    role: str = Field(default="user", description="User role ('admin' or 'user')")
+    created_at: str = Field(..., description="Account creation timestamp (ISO 8601)")
+
+
+class TokenResponse(BaseModel):
+    """JWT Bearer authentication token and user profile."""
+    access_token: str = Field(..., description="Signed JWT Bearer access token")
+    token_type: str = Field(default="bearer", description="Token type")
+    user: UserResponse = Field(..., description="Authenticated user profile")

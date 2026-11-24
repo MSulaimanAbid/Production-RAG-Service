@@ -7,6 +7,18 @@ import { MarkdownRenderer } from '../components/MarkdownRenderer.js';
 import { AnswerSkeleton } from '../components/ui/Skeleton.js';
 import { api } from '../services/api.js';
 
+/**
+ * AskAIPage Component.
+ * The core Question & Answering workspace of DocuMind.
+ * Features natural language querying, document scope filtering, dynamic retrieval
+ * hyperparameters (Top-K, similarity threshold), formatted answer generation with
+ * verified source citations, and retrieved chunk inspection.
+ *
+ * @param {Object} props
+ * @param {Array<Object>} props.documents - Indexed documents available for scoping.
+ * @param {(toast: Object) => void} [props.onNotify] - Global notification toast trigger.
+ * @param {() => void} [props.onOpenUpload] - Handler to launch file upload modal.
+ */
 export function AskAIPage({
   documents = [],
   onNotify,

@@ -1,6 +1,16 @@
 import { html, React } from '../utils/html.js';
 import { Badge } from './ui/Badge.js';
 
+/**
+ * RetrievedContextPanel Component.
+ * Inspector drawer displaying all vector chunks retrieved from ChromaDB for the active query.
+ * Supports similarity score inspection, search filtering, and smooth scrolling to active citations.
+ *
+ * @param {Object} props
+ * @param {Array<Object>} props.chunks - List of retrieved chunk models.
+ * @param {string|null} [props.selectedChunkId] - ID of the highlighted chunk selected from citations.
+ * @param {(chunkId: string) => void} [props.onSelectChunk] - Callback on chunk selection.
+ */
 export function RetrievedContextPanel({
   chunks = [],
   selectedChunkId = null,

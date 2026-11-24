@@ -6,6 +6,19 @@ import { TableSkeleton } from './ui/Skeleton.js';
 import { Modal } from './ui/Modal.js';
 import { api } from '../services/api.js';
 
+/**
+ * DocumentTable Component.
+ * Interactive document management table with real-time text search,
+ * file-type filtering (PDF / DOCX), multi-column sorting, and deletion confirmation modal.
+ *
+ * @param {Object} props
+ * @param {Array<Object>} props.documents - List of indexed documents from backend.
+ * @param {boolean} [props.loading] - Whether document fetch is currently active.
+ * @param {() => void} [props.onRefresh] - Refresh documents handler.
+ * @param {() => void} [props.onOpenUpload] - Handler to open file upload dialog.
+ * @param {(doc: Object) => void} [props.onViewDetails] - Handler to inspect document details.
+ * @param {(toast: Object) => void} [props.onNotify] - Global toast notification handler.
+ */
 export function DocumentTable({
   documents = [],
   loading = false,

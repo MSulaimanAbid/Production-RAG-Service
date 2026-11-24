@@ -17,10 +17,11 @@ from contextlib import asynccontextmanager
 from typing import Any
 
 import structlog
-from fastapi import FastAPI, File, HTTPException, Request, UploadFile
+from fastapi import Depends, FastAPI, File, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
+from backend.auth import create_access_token, get_current_user, get_user_store
 from backend.config import configure_logging, get_settings
 from backend.schemas import (
     AskRequest,
@@ -30,6 +31,10 @@ from backend.schemas import (
     ErrorResponse,
     HealthResponse,
     ServiceStatus,
+    TokenResponse,
+    UserLoginRequest,
+    UserRegisterRequest,
+    UserResponse,
 )
 
 # ── Bootstrap ──────────────────────────────────────────────────────────────────
@@ -86,9 +91,24 @@ app.add_middleware(
 # ── Static Files ──────────────────────────────────────────────────────────────
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
+
+
+class DevStaticFiles(StaticFiles):
+    """Static file handler that adds no-cache headers to JS source files."""
+
+    async def get_response(self, path: str, scope):
+        """Intercept responses for frontend source files and enforce no-cache development headers."""
+        response = await super().get_response(path, scope)
+        if path.startswith("src/"):
+            response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+            response.headers["Pragma"] = "no-cache"
+            response.headers["Expires"] = "0"
+        return response
+
+
 _frontend_dir = Path("frontend")
 _frontend_dir.mkdir(exist_ok=True)
-app.mount("/static", StaticFiles(directory=str(_frontend_dir)), name="static")
+app.mount("/static", DevStaticFiles(directory=str(_frontend_dir)), name="static")
 
 
 # ── Request ID middleware ──────────────────────────────────────────────────────
@@ -115,6 +135,30 @@ async def request_id_middleware(request: Request, call_next):
 
 
 # ── Global exception handlers ─────────────────────────────────────────────────
+from fastapi.exceptions import RequestValidationError
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError) -> JSONResponse:
+    """Normalize Pydantic validation errors into clean human-readable text."""
+    request_id = structlog.contextvars.get_contextvars().get("request_id")
+    messages = []
+    for err in exc.errors():
+        field = " -> ".join(str(loc) for loc in err.get("loc", []) if loc != "body")
+        msg = err.get("msg", "Invalid value")
+        messages.append(f"{field}: {msg}" if field else msg)
+    detail_str = "; ".join(messages) if messages else "Invalid request payload."
+
+    return JSONResponse(
+        status_code=422,
+        content=ErrorResponse(
+            error="UNPROCESSABLE_ENTITY",
+            detail=detail_str,
+            request_id=request_id,
+        ).model_dump(mode="json"),
+    )
+
+
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request: Request, exc: HTTPException) -> JSONResponse:
     """Return consistent error response shape for all HTTP exceptions."""
@@ -148,6 +192,7 @@ def _status_to_error_code(status: int) -> str:
     """Map HTTP status codes to short error code strings."""
     return {
         400: "BAD_REQUEST",
+        401: "UNAUTHORIZED",
         404: "NOT_FOUND",
         409: "CONFLICT",
         415: "UNSUPPORTED_MEDIA_TYPE",
@@ -170,7 +215,14 @@ async def serve_frontend() -> Any:
 
     index_path = Path("frontend") / "index.html"
     if index_path.exists():
-        return FileResponse(index_path)
+        return FileResponse(
+            index_path,
+            headers={
+                "Cache-Control": "no-cache, no-store, must-revalidate",
+                "Pragma": "no-cache",
+                "Expires": "0",
+            },
+        )
     return JSONResponse({"message": f"Welcome to {settings.app_name} API. Visit /docs for OpenAPI specs."})
 
 # ── Health ─────────────────────────────────────────────────────────────────────
@@ -237,6 +289,65 @@ async def get_config() -> dict[str, Any]:
     }
 
 
+# ── Auth ───────────────────────────────────────────────────────────────────────
+@app.post(
+    "/api/auth/login",
+    response_model=TokenResponse,
+    summary="Log in user",
+    description="Authenticate with email and password to receive a JWT access token.",
+    tags=["Auth"],
+    responses={401: {"model": ErrorResponse, "description": "Invalid credentials"}},
+)
+async def login(credentials: UserLoginRequest) -> TokenResponse:
+    """Authenticate user credentials and issue an access token."""
+    store = get_user_store()
+    user = store.authenticate(credentials.email, credentials.password)
+    if not user:
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid email or password.",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    token = create_access_token(user)
+    logger.info("User logged in successfully", email=user.email, user_id=user.id)
+    return TokenResponse(access_token=token, token_type="bearer", user=user)
+
+
+@app.post(
+    "/api/auth/register",
+    response_model=TokenResponse,
+    status_code=201,
+    summary="Register user",
+    description="Create a new user account and receive an access token.",
+    tags=["Auth"],
+    responses={409: {"model": ErrorResponse, "description": "User already exists"}},
+)
+async def register(request: UserRegisterRequest) -> TokenResponse:
+    """Register a new user account."""
+    store = get_user_store()
+    user = store.create_user(
+        email=request.email,
+        password=request.password,
+        name=request.name,
+    )
+    token = create_access_token(user)
+    logger.info("User registered successfully", email=user.email, user_id=user.id)
+    return TokenResponse(access_token=token, token_type="bearer", user=user)
+
+
+@app.get(
+    "/api/auth/me",
+    response_model=UserResponse,
+    summary="Get current user profile",
+    description="Return profile of the currently authenticated user.",
+    tags=["Auth"],
+    responses={401: {"model": ErrorResponse, "description": "Unauthenticated"}},
+)
+async def get_me(current_user: UserResponse = Depends(get_current_user)) -> UserResponse:
+    """Return profile of the currently authenticated user."""
+    return current_user
+
+
 # ── Documents ──────────────────────────────────────────────────────────────────
 @app.post(
     "/api/documents",
@@ -250,12 +361,16 @@ async def get_config() -> dict[str, Any]:
     tags=["Documents"],
     responses={
         400: {"model": ErrorResponse, "description": "Empty file or no extractable text"},
+        401: {"model": ErrorResponse, "description": "Unauthorized"},
         409: {"model": ErrorResponse, "description": "Duplicate document"},
         415: {"model": ErrorResponse, "description": "Unsupported file type"},
         503: {"model": ErrorResponse, "description": "Embedding service unavailable"},
     },
 )
-async def upload_document(file: UploadFile = File(...)) -> DocumentResponse:
+async def upload_document(
+    file: UploadFile = File(...),
+    current_user: UserResponse = Depends(get_current_user),
+) -> DocumentResponse:
     """Ingest an uploaded document through the full pipeline."""
     from backend.ingestion.pipeline import ingest_document
     from backend.guardrails import validate_upload
@@ -274,8 +389,11 @@ async def upload_document(file: UploadFile = File(...)) -> DocumentResponse:
     summary="List all documents",
     description="Return a list of all ingested documents and their metadata.",
     tags=["Documents"],
+    responses={401: {"model": ErrorResponse, "description": "Unauthorized"}},
 )
-async def list_documents() -> DocumentListResponse:
+async def list_documents(
+    current_user: UserResponse = Depends(get_current_user),
+) -> DocumentListResponse:
     """List all documents currently stored in the system."""
     from backend.ingestion.vector_store import get_vector_store
 
@@ -290,9 +408,15 @@ async def list_documents() -> DocumentListResponse:
     summary="Get document details",
     description="Return full metadata for a specific document by its ID.",
     tags=["Documents"],
-    responses={404: {"model": ErrorResponse, "description": "Document not found"}},
+    responses={
+        401: {"model": ErrorResponse, "description": "Unauthorized"},
+        404: {"model": ErrorResponse, "description": "Document not found"},
+    },
 )
-async def get_document(doc_id: str) -> DocumentResponse:
+async def get_document(
+    doc_id: str,
+    current_user: UserResponse = Depends(get_current_user),
+) -> DocumentResponse:
     """Get metadata for a single document."""
     from backend.ingestion.vector_store import get_vector_store
 
@@ -312,9 +436,15 @@ async def get_document(doc_id: str) -> DocumentResponse:
         "Deleted content will never appear in future answers."
     ),
     tags=["Documents"],
-    responses={404: {"model": ErrorResponse, "description": "Document not found"}},
+    responses={
+        401: {"model": ErrorResponse, "description": "Unauthorized"},
+        404: {"model": ErrorResponse, "description": "Document not found"},
+    },
 )
-async def delete_document(doc_id: str) -> None:
+async def delete_document(
+    doc_id: str,
+    current_user: UserResponse = Depends(get_current_user),
+) -> None:
     """Delete a document and all its vectors."""
     from backend.ingestion.vector_store import get_vector_store
 
@@ -337,10 +467,14 @@ async def delete_document(doc_id: str) -> None:
     tags=["QA"],
     responses={
         400: {"model": ErrorResponse, "description": "Invalid or blocked question"},
+        401: {"model": ErrorResponse, "description": "Unauthorized"},
         503: {"model": ErrorResponse, "description": "LLM or embedding service unavailable"},
     },
 )
-async def ask_question(request: AskRequest) -> AskResponse:
+async def ask_question(
+    request: AskRequest,
+    current_user: UserResponse = Depends(get_current_user),
+) -> AskResponse:
     """Full RAG pipeline: retrieve relevant chunks and generate a grounded answer."""
     from backend.guardrails import validate_question
     from backend.retrieval import retrieve_chunks

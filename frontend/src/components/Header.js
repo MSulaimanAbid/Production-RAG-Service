@@ -1,6 +1,18 @@
 import { html } from '../utils/html.js';
 import { Button } from './ui/Button.js';
 
+/**
+ * Application Header Component.
+ * Displays current page title, contextual subtitle, mobile drawer hamburger button,
+ * and persistent document upload action button.
+ *
+ * @param {Object} props
+ * @param {string} props.title - Current view title.
+ * @param {string} [props.subtitle] - Contextual subtitle description.
+ * @param {() => void} [props.onOpenUpload] - Handler to launch Document Upload modal.
+ * @param {() => void} [props.onToggleMobile] - Handler to toggle mobile navigation menu.
+ * @param {number} [props.totalDocs] - Count of currently indexed documents.
+ */
 export function Header({
   title,
   subtitle,

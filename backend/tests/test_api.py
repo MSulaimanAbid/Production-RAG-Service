@@ -165,3 +165,73 @@ async def test_root_serves_frontend(client: AsyncClient):
     assert response.status_code == 200
     assert "Production RAG Service" in response.text
     assert "React" in response.text
+
+
+@pytest.mark.asyncio
+async def test_unauthenticated_requests_return_401(unauthenticated_client: AsyncClient):
+    """Verify that protected endpoints return 401 Unauthorized without auth headers."""
+    response = await unauthenticated_client.get("/api/documents")
+    assert response.status_code == 401
+    data = response.json()
+    assert data["error"] == "UNAUTHORIZED"
+
+    response = await unauthenticated_client.post("/api/ask", json={"question": "test question?"})
+    assert response.status_code == 401
+
+
+@pytest.mark.asyncio
+async def test_auth_login_success(unauthenticated_client: AsyncClient):
+    """Verify successful login returns valid JWT token and user info."""
+    response = await unauthenticated_client.post(
+        "/api/auth/login",
+        json={"email": "admin@documind.ai", "password": "admin123"},
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert "access_token" in data
+    assert data["token_type"] == "bearer"
+    assert data["user"]["email"] == "admin@documind.ai"
+
+    # Verify token can access protected /api/auth/me
+    token = data["access_token"]
+    me_resp = await unauthenticated_client.get(
+        "/api/auth/me",
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert me_resp.status_code == 200
+    me_data = me_resp.json()
+    assert me_data["email"] == "admin@documind.ai"
+
+
+@pytest.mark.asyncio
+async def test_auth_login_invalid_password_returns_401(unauthenticated_client: AsyncClient):
+    """Verify incorrect credentials return 401 Unauthorized."""
+    response = await unauthenticated_client.post(
+        "/api/auth/login",
+        json={"email": "admin@documind.ai", "password": "wrongpassword"},
+    )
+    assert response.status_code == 401
+    data = response.json()
+    assert data["error"] == "UNAUTHORIZED"
+
+
+@pytest.mark.asyncio
+async def test_auth_register_and_login(unauthenticated_client: AsyncClient):
+    """Verify registering a new user creates account and returns working token."""
+    import uuid
+    new_email = f"tester_{uuid.uuid4().hex[:8]}@documind.ai"
+    reg_resp = await unauthenticated_client.post(
+        "/api/auth/register",
+        json={"email": new_email, "password": "mypassword123", "name": "Jane Doe"},
+    )
+    assert reg_resp.status_code == 201
+    data = reg_resp.json()
+    assert data["user"]["email"] == new_email
+    assert data["user"]["name"] == "Jane Doe"
+
+    # Attempt duplicate registration -> 409 Conflict
+    dup_resp = await unauthenticated_client.post(
+        "/api/auth/register",
+        json={"email": new_email, "password": "mypassword123", "name": "Jane Doe"},
+    )
+    assert dup_resp.status_code == 409
